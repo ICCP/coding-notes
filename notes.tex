@@ -1,4 +1,4 @@
-\documentclass[openany,oneside]{book}
+\documentclass[openany,oneside]{report}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -211,7 +211,7 @@ The dot means the current directory, and the slash separates directories and fil
 \label{chap:Structure}
 
 \begin{quote}\small
-\emph{``Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.'' \\ \ldots because that guy might be you in six months.} \\ \hspace*{\fill}---Martin Golding
+  \emph{``Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.''} \\ \ldots because that guy might be you in six months. \\ \hspace*{\fill}---Martin Golding
 \end{quote}
 Readability is the most important quality of your code.
 It's more important even than being bug-free; you can fix a readable but incorrect program, while an unreadable program is next to useless even if it works.
@@ -437,7 +437,7 @@ do i = 1, n
     end do
 end do
 \end{lstlisting}
-    or by simply writing \texttt{c = a + b}.
+    or simply by writing \texttt{c = a + b}.
     Guess which is both faster and more readable?
   \item\textbf{Keep inner loops small.} The code inside loops, especially in nested loops, is executed many times.
     This code will likely be the bottleneck of your program, so it makes sense to concentrate your optimization efforts there.
@@ -588,8 +588,8 @@ Forgetting \keyword{implicit none} and making a typo in one of your variable nam
 \chapter{Random numbers}
 \label{chap:Random numbers}
 When generating random numbers, you'll want to take care in the methods you use; some RNGs are most definitely better than others.
-You can always write your \href{http://xkcd.com/221/}{own}, but Fortran has a few reasonably good subroutines to do it for you.
-The default \texttt{gfortran} installation provides access to a low-level \texttt{\keyword{rand}()} function, but you'll almost certainly want to use the more sophisticated \keyword{random\_number} subroutine instead---it generates much higher quality random numbers and automatically threads over arrays.
+You can always roll your \href{http://xkcd.com/221/}{own}, but Fortran has a few reasonably good subroutines to do it for you.
+The default \texttt{gfortran} installation provides access to a low-level \texttt{\keyword{rand}()} function, but you'll almost certainly want to use the more sophisticated \keyword{random\_number} subroutine instead---it generates much higher quality random numbers and automatically threads over (fills) arrays.
 When you've ironed out your algorithm and want to start collecting data, you should also remember to seed the RNG.
 Computers generate random numbers by way of a proceedural mathematical formula, so using the same seed produces the same series of random values.
 The following subroutine will seed the RNG with entropy collected by the system (if available) or the current time $+$ process ID:
@@ -761,7 +761,7 @@ This does a few things for you:
     Any files and directories that get added to \texttt{iccp/} can be tracked as part of the current project.
   \item \texttt{git add .} adds every file's local changes to the \emph{staging area} or \emph{index}.
     The index tracks changes for you to inspect before they become an official part of the project history.
-  \item \texttt{git commit -m ``Initial commit''} takes everything in the staging area and adds it to the history with the description ``Initial commit''.
+  \item \texttt{git commit -m ``Initial commit''} takes everything in the index and adds it to the history with the description ``Initial commit''.
 \end{itemize}
 You can add future changes in \texttt{myProg.f90} to the history in a similar way:
 \begin{verbatim}
