@@ -2,6 +2,7 @@
 
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{float}
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{microtype}
@@ -39,8 +40,17 @@
     showstringspaces=false,
     caption=\lstname,
     firstnumber=auto,
-    frame=shadowbox,
+    frame=single,
     rulesepcolor=\color{black}
+}
+
+\lstdefinestyle{Bash}{
+  alsoletter={$},
+  language=bash,
+  keywordstyle=\ttfamily,
+  numbers=none,
+  caption=,
+  frame=none
 }
 
 \newcommand{\keyword}[1]{\texttt{\bfseries\color{DarkBlue}#1}}
@@ -120,7 +130,7 @@ You can install it by replacing \texttt{gfortran} with \texttt{texlive} in the c
 
 Once you have \texttt{gfortran} installed, you can start writing programs.
 You will generally compile and run your programs from a terminal window (also called a \emph{console}).
-A few useful commands are
+A few useful commands are:
 \begin{verbatim}
 $ ls              # display the contents of the current directory
 $ ls -l           # display contents with extra details
@@ -139,8 +149,8 @@ $ mkdir iccp          # create a new directory called 'iccp'
 $ cd iccp             # move to the new directory
 $ gedit myprog.f90    # open a text editor with the file 'myprog.f90'
 \end{verbatim}
-The gedit text editor pops open in which you can type your first program:
-\lstinputlisting{examples/myProg.f90}
+The gedit text editor pops open in which you can type the program in \autoref{lst:myProg}.
+\lstinputlisting[float=htbp,label=lst:myProg]{examples/myProg.f90}
 It is probably obvious what this program does. However, a few remarks are in order:
 \begin{itemize}
   \item The program starts with a declaration of variables.
@@ -215,9 +225,9 @@ The dot means the current directory, and the slash separates directories and fil
 \end{quote}
 Readability is the most important quality of your code.
 It's more important even than being bug-free; you can fix a readable but incorrect program, while an unreadable program is next to useless even if it works.
-As an example of what not to do, take a look at the following gem, originally written in FORTRAN IV for an IBM 1130 (in 1969!):
-\lstinputlisting{examples/snppic.f}
-This a perfect example of spaghetti code; it makes me want to pick out my eyes with a fondue fork.
+As an example of what not to do, take a look at the gem in \autoref{lst:snppic}.
+\lstinputlisting[float=htbp,label=lst:snppic]{examples/snppic.f}
+Originally written in FORTRAN IV for an IBM 1130 (in 1969!), it is a perfect example of spaghetti code; it makes me want to pick out my eyes with a fondue fork.
 If you can figure out what it does, I'll buy you a beer.\footnote{It's part of one of the first open source programs in history, so no snooping with Google!}
 
 To keep your code readable, you need to structure your program in a smart way while following a reasonable coding style.
@@ -228,16 +238,16 @@ In this chapter we focus on structure.
 
 As a (silly) example, let's say you need to sum all integers in a certain interval.
 Programmers are lazy, so we're going to write a program to do that for us.
-Gauss, of course, found a way to do this very quickly, but for the sake of the example, let's pretend we don't know about it.
-\lstinputlisting{examples/SumsBeforeGauss.f90}
+Gauss, of course, found a way to do this very quickly, but for the sake of the example, let's pretend we don't know about it and use \autoref{lst:SumsBeforeGauss} instead.
+\lstinputlisting[float=htbp,label=lst:SumsBeforeGauss]{examples/SumsBeforeGauss.f90}
 Note that we can't use the word \texttt{sum} as a variable name, since that's a Fortran intrinsic, so we use \texttt{total} instead.
 This program is simple, clean, and doesn't need comments to show what it does.
 However, we can do better.
 Summing numbers in an interval is a generic mathematical operation, which we might need to do more often.
 It therefore makes sense to move that code to a separate subroutine which we only have to write once and can then reuse as many times as we need.
-In Fortran, this would look like
-\lstinputlisting{examples/SumsBeforeGauss_subroutine.f90}
-In Fortran, subroutines are invoked with the keyword \keyword{call} followed by the name of the routine and an optional list of parameters in parentheses.
+We can do this in Fortran, with the subroutine seen in \autoref{lst:SumsBeforeGauss_subroutine}.
+\lstinputlisting[float=htbp,label=lst:SumsBeforeGauss_subroutine]{examples/SumsBeforeGauss_subroutine.f90}
+Fortran subroutines are invoked with the keyword \keyword{call} followed by the name of the routine and an optional list of parameters in parentheses.
 The code for the subroutine itself appears after the keyword \keyword{contains}.
 We don't have to type \keyword{implicit none} again, since that's inherited from the program.
 When declaring the parameters, we need to specify not only the type, but also how we're going to use them, \emph{i.e.}, the \emph{intent}.
@@ -245,8 +255,9 @@ For input and output parameters, we use \texttt{\keyword{intent}(\keyword{in})} 
 For parameters functioning as both, we use \texttt{\keyword{intent}(\keyword{inout})}.
 
 \texttt{stupid\_sum} is essentially just a mathematical function.
-Wouldn't it then be nice to be able to use it that way, by simply invoking it with \texttt{total = stupid\_sum(first, last)}? Fortunately, Fortran allows us to do just that:
-\lstinputlisting{examples/SumsBeforeGauss_function.f90}
+Wouldn't it then be nice to be able to use it that way, by simply invoking it with \texttt{total = stupid\_sum(first, last)}? 
+Fortunately, \autoref{lst:SumsBeforeGauss_function} demonstrates a way to do just that.
+\lstinputlisting[float=htbp,label=lst:SumsBeforeGauss_function]{examples/SumsBeforeGauss_function.f90}
 A function in Fortran is just a subroutine returning a value.
 We therefore need to specify the type of (the result of) the function as well as its arguments.
 This type is given before the keyword \keyword{function}.
@@ -258,22 +269,22 @@ The golden rule here is: \emph{every function or subroutine should do one thing 
 In practice this also means they should be small; if your function doesn't fit on a single screen, that's usually an indication that you should split it up.
 Besides making the code more readable, this also makes it easier to modify.
 Let's say that you suddenly discover Gauss' trick for summing intervals.
-All you need to do then is replace \texttt{stupid\_sum} by \texttt{smart\_sum}:
-\lstinputlisting{examples/smart_sum_function.f90}
+All you need to do then is replace \texttt{stupid\_sum} by \texttt{smart\_sum} (\autoref{lst:smart_sum_function}).
+\lstinputlisting[float=t!,label=lst:smart_sum_function]{examples/smart_sum_function.f90}
 You don't have to search through all your code to change the calculation everywhere; you just update the function and your entire program suddenly becomes a lot faster.
 
 \section{Modules}
 
 Many functions and subroutines are reusable not only within a single program, but also between programs.
 In that case it is a good idea to place those routines in a module.\footnote{Some subroutines---particularly those that allocate arrays that appear as arguments---require you to write an explicit interface for them \emph{or} place them within a module (so the compiler can generate the interface for you).}
-For example, if you envisage using Gauss' algorithm very often in the future, you might want to create the module \texttt{gauss.f90}:
-\lstinputlisting{examples/gauss.f90}
+For example, if you envisage using Gauss' algorithm very often in the future, you might want to create the module \texttt{gauss.f90} given in \autoref{lst:gauss}.
+\lstinputlisting[float=htbp,label=lst:gauss]{examples/gauss.f90}
 By default, all functions and subroutines in a module are visible to external programs.
 This can cause collisions with similarly names functions in other modules, especially in the case of helper routines that are only used within the module.
 Common practice is therefore to specify the \keyword{private} keyword to change the default behavior; only the routines that are explicitly made public are then usable elsewhere.
 
-Any program can now use the functions in \texttt{gauss.f90} by simply specifying \texttt{\keyword{use} Gauss}:
-\lstinputlisting{examples/Sums.f90}
+Any program can now use the functions in \texttt{gauss.f90} by simply specifying \texttt{\keyword{use} Gauss} (\autoref{lst:Sums}).
+\lstinputlisting[float=htbp,label=lst:Sums]{examples/Sums.f90}
 You now have two different files that need to be compiled to produce a working program.
 It's possible to do this by hand, but there is a much easier way with \nameref{chap:Makefiles}.
 
@@ -293,9 +304,8 @@ $ make clean
 \end{verbatim}
 The \texttt{make} program is smart enough to only compile files that have changed; so if you just fixed a bug in \texttt{file6.f90}, it will only recompile that file (generating \texttt{file6.o}) and perform the linking step, without touching the other files.
 
-So, what does this \texttt{Makefile} look like?
-\lstinputlisting[language=,showtabs=true]{examples/example_makefile}
-Let's go through it step by step:
+\lstinputlisting[language=,showtabs=true,float=hp,label=lst:example_makefile]{examples/example_makefile}
+So, what does a \texttt{Makefile} look like? As an example, let's go through \autoref{lst:example_makefile} step by step.
 \begin{itemize}
   \item The first lines declare a few variables for later use.
     \texttt{FC} is set to the Fortran compiler \texttt{gfortran}, \texttt{FFLAGS} contains the compiler flags and \texttt{LDFLAGS} the linker flags.
@@ -466,7 +476,7 @@ end do
 \end{itemize}
 These optimizations are more about preventing your code from becoming unnecessarily slow, than trying to squeeze the last drop of performance out of it.
 Besides, low-level optimizations generally yield only about a factor of 2 speedup, and that's if you know what you're doing.
-Optimizing your algorithms by improving scalability is where the real speedups can be gained.
+Profiling your code to determine bottlenecks and optimizing your algorithms by improving scalability is where you'll find real speedups.
 
 \section{Scalability; or, the importance of big O}
 
@@ -546,12 +556,12 @@ Remember: you will be spending a lot more time reading your code than writing it
     Proper indentation makes it clear where control structures begin and end, and is a major boon to readability.
     If the indentation puts you over the 80 character limit, that's an indication that you may need to refactor your code intro smaller subroutines.
     Four levels of indentation should generally be the maximum.
-  \item\textbf{Spaces}---Put spaces around binary operators, including \texttt{::}, and after keywords and commas, not after unary operators, function names or around parentheses. For example
-\begin{lstlisting}[caption=, nolol]
+  \item\textbf{Spaces}---Put spaces around binary operators, including \texttt{::}, and after keywords and commas, not after unary operators, function names or around parentheses. For example\newpage
+\begin{lstlisting}[caption=,nolol,float=t!]
 real(8) :: x, y
 x = func1()
 if ((x < 0) .or. (x > 1)) then
-    y = func2(-2, x + 3)
+    y = func2(-2, 2*x + 3)
 end if
 \end{lstlisting}
   \item\textbf{Naming}---Identifiers in Fortran can't contain spaces.
@@ -592,12 +602,12 @@ You can always roll your \href{http://xkcd.com/221/}{own}, but Fortran has a few
 The default \texttt{gfortran} installation provides access to a low-level \texttt{\keyword{rand}()} function, but you'll almost certainly want to use the more sophisticated \keyword{random\_number} subroutine instead---it generates much higher quality random numbers and automatically threads over (fills) arrays.
 When you've ironed out your algorithm and want to start collecting data, you should also remember to seed the RNG.
 Computers generate random numbers by way of a proceedural mathematical formula, so using the same seed produces the same series of random values.
-The following subroutine will seed the RNG with entropy collected by the system (if available) or the current time $+$ process ID:
-\lstinputlisting{examples/init_random_seed.f90}
+The subroutine in \autoref{lst:init_random_seed} will seed the RNG with entropy collected by the system (if available) or the current time $+$ process ID.
+\lstinputlisting[float=htbp,label=lst:init_random_seed]{examples/init_random_seed.f90}
 
 The Fortran random number generator produces uniformly distributed reals on the interval $\left[0, 1\right)$, but simulations often require numbers drawn from a different distribution. 
-For convenience, we provide the following function for transforming two such numbers into two numbers with a standard normal distribution via a Box-Muller transform:
-\lstinputlisting{examples/box_muller.f90}
+For convenience, we provide \autoref{lst:box_muller} for transforming two such numbers into two numbers with a standard normal distribution via a Box-Muller transform.
+\lstinputlisting[float=htbp,label=lst:box_muller]{examples/box_muller.f90}
 
 \chapter{Linear algebra}
 \label{chap:Linear algebra}
@@ -614,9 +624,9 @@ For your convenience, we therefore provide two functions for common tasks: calcu
 This should help you get started.
 For other functions, use Google.
 BLAS and LAPACK are quite extensively documented.
-\lstinputlisting{examples/invertMatrix.f90}
+\lstinputlisting[float=htbp,label=lst:invertMatrix]{examples/invertMatrix.f90}
 
-\lstinputlisting{examples/calculateEigensystem.f90}
+\lstinputlisting[float=htbp,label=lst:calculateEigensystem]{examples/calculateEigensystem.f90}
 
 \chapter{Plotting with PLplot}
 \label{chap:PLplot}
@@ -642,8 +652,9 @@ The \texttt{pkg-config} command will generate the correct compiler flags on the 
 
 \section{Plotting functions}
 
-As a quick introduction to using PLplot, we go through the following demo program step by step:
-\lstinputlisting{examples/PLplotDemo.f90}
+As a quick introduction to using PLplot, we'll go through \autoref{lst:PLplotDemo} step by step:
+\lstinputlisting[float=htbp,label=lst:PLplotDemo,lastline=43]{examples/PLplotDemo.f90}
+\lstinputlisting[caption=PLplotDemo (continued),float=htbp,label=lst:PLplotDemo,firstline=44,firstnumber=44]{examples/PLplotDemo.f90}
 \begin{itemize}
   \item \texttt{\keyword{use} plplot} imports the PLplot functions and subroutines into our program.
   \item \texttt{\keyword{call} plparseopts(PL\_PARSE\_FULL)} parses any command-line arguments of your program that are relevant for PLplot (see below).
