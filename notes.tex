@@ -41,15 +41,15 @@
     caption=\lstname,
     firstnumber=auto,
     frame=single,
-    rulesepcolor=\color{black}
+    rulesepcolor=\color{black},
+    gobble=2
 }
 
 \lstdefinestyle{Bash}{
-  alsoletter={$},
   language=bash,
+  caption=,
   keywordstyle=\ttfamily,
   numbers=none,
-  caption=,
   frame=none
 }
 
@@ -69,8 +69,7 @@
   \titlepic{
     \begin{figure}[b]
       \centering
-      \includegraphics[width=0.45\textwidth]{MSU_logo.pdf}\\\vspace{2cm}
-      \includegraphics[width=0.45\textwidth]{TU_logo.pdf}
+      \includegraphics[width=0.33\pdfpagewidth]{MSU_logo.pdf}\hfill \includegraphics[width=0.33\pdfpagewidth]{TU_logo.pdf}
     \end{figure}
   }
 \maketitle
@@ -131,24 +130,25 @@ You can install it by replacing \texttt{gfortran} with \texttt{texlive} in the c
 Once you have \texttt{gfortran} installed, you can start writing programs.
 You will generally compile and run your programs from a terminal window (also called a \emph{console}).
 A few useful commands are:
-\begin{verbatim}
-$ ls              # display the contents of the current directory
-$ ls -l           # display contents with extra details
-$ cp file path    # copy 'file' to 'path'
-$ mv file path    # move 'file' to 'path'
-$ rm file         # remove 'file'
-$ mkdir dir       # create a new directory called 'dir'
-$ cd dir          # change current directory to 'dir'
-$ rmdir dir       # remove directory 'dir' (only if it's empty)
-$ rm -r dir       # remove directory 'dir' (even if it's not empty)
-\end{verbatim}
+\begin{lstlisting}[style=Bash, nolol]
+  $ ls              # display the contents of the current directory
+  $ ls -l           # display contents with extra details
+  $ cp file path    # copy 'file' to 'path'
+  $ mv file path    # move 'file' to 'path'
+  $ rm file         # remove 'file'
+  $ mkdir dir       # create a new directory called 'dir'
+  $ cd dir          # change current directory to 'dir'
+  $ rmdir dir       # remove directory 'dir' (only if it's empty)
+  $ rm -r dir       # remove directory 'dir' (even if it's not empty)
+  $ man cmd         # provide documentation on 'cmd'
+\end{lstlisting}
 
 For your first program, open a terminal, create a directory for ICCP files and open your first Fortran file by typing
-\begin{verbatim}
-$ mkdir iccp          # create a new directory called 'iccp'
-$ cd iccp             # move to the new directory
-$ gedit myprog.f90    # open a text editor with the file 'myprog.f90'
-\end{verbatim}
+\begin{lstlisting}[style=Bash, nolol]
+  $ mkdir iccp          # create a new directory called 'iccp'
+  $ cd iccp             # move to the new directory
+  $ gedit myprog.f90    # open a text editor with the file 'myprog.f90'
+\end{lstlisting}
 The gedit text editor pops open in which you can type the program in \autoref{lst:myProg}.
 \lstinputlisting[float=htbp,label=lst:myProg]{examples/myProg.f90}
 It is probably obvious what this program does. However, a few remarks are in order:
@@ -165,7 +165,7 @@ It is probably obvious what this program does. However, a few remarks are in ord
     For double-precision numbers, use \texttt{d} instead of \texttt{e} in scientific notation, \emph{e.g.}, \texttt{1d-1}. 
     It is also possible to specify the precision as a suffix: \texttt{1.0\_4} for single and \texttt{1.0\_8} for double precision. 
     This also works for integers.
-  \item \texttt{\keyword{integer} :: fibonacci(N)} allocates an array of 20 integers, with the array index running from 1 to 20.
+  \item \texttt{\keyword{integer} :: fibonacci(N)} allocates an array of 20 integers, with the array index\footnote{Fortran array indices can start wherever you want them to, though the default is to start at 1.} running from 1 to 20.
   \item `\texttt{*}' is multiplication, `\texttt{**}' is exponentiation.
   \item The \keyword{print} statement on line 24 contains the formatting string \str{"(4I6)"}. 
     This tells Fortran to print 4 integers per line, each taking up 6 characters.
@@ -412,15 +412,15 @@ Let's look at a few examples:
     A similar observation holds for exponentiation; it is slower than multiplication in general, but \texttt{gfortran} will automatically convert \texttt{x**2} to \texttt{x * x}, provided the exponent is \keyword{integer}.
   \item\textbf{Unwinding small loops reduces overhead.} Common wisdom says that
 \begin{lstlisting}[caption=, nolol]
-do i = 1, 3
-    call do_something(i)
-end do
+  do i = 1, 3
+      call do_something(i)
+  end do
 \end{lstlisting}
     is slower than
 \begin{lstlisting}[caption=, nolol]
-call do_something(1)
-call do_something(2)
-call do_something(3)
+  call do_something(1)
+  call do_something(2)
+  call do_something(3)
 \end{lstlisting}
     because of the overhead of the loop.
     Although again true in principle, modern CPUs use branch prediction, which reduces the overhead.
@@ -441,14 +441,14 @@ That being said, there are a few general rules that will prevent your code from 
     Fortran has many built-in numerical functions that are much faster than anything you'll be able to write---use them! (Google `Fortran intrinsics' to get an overview.)
   \item\textbf{Use array operations.} You can add two arrays by writing
 \begin{lstlisting}[caption=, nolol]
-do i = 1, n
-    do j = 1, m
-        c(i, j) = a(i, j) + b(i, j)
-    end do
-end do
+  do i = 1, n
+      do j = 1, m
+          c(i, j) = a(i, j) + b(i, j)
+      end do
+  end do
 \end{lstlisting}
-    or simply by writing \texttt{c = a + b}.
-    Guess which is both faster and more readable?
+or simply by writing \texttt{c = a + b}.
+Guess which is both faster and more readable?
   \item\textbf{Keep inner loops small.} The code inside loops, especially in nested loops, is executed many times.
     This code will likely be the bottleneck of your program, so it makes sense to concentrate your optimization efforts there.
     Move as much code out of the inner loop as possible.
@@ -558,11 +558,11 @@ Remember: you will be spending a lot more time reading your code than writing it
     Four levels of indentation should generally be the maximum.
   \item\textbf{Spaces}---Put spaces around binary operators, including \texttt{::}, and after keywords and commas, not after unary operators, function names or around parentheses. For example\newpage
 \begin{lstlisting}[caption=,nolol,float=t!]
-real(8) :: x, y
-x = func1()
-if ((x < 0) .or. (x > 1)) then
-    y = func2(-2, 2*x + 3)
-end if
+  real(8) :: x, y
+  x = func1()
+  if ((x < 0) .or. (x > 1)) then
+      y = func2(-2, 2*x + 3)
+  end if
 \end{lstlisting}
   \item\textbf{Naming}---Identifiers in Fortran can't contain spaces.
     Use \texttt{CamelCase} to separate words in program and module names, and \texttt{lower\_case\_with\_underscores} for function and variable names.
@@ -734,11 +734,11 @@ While a true introduction is outside the scope of these notes, we'll give a few 
     All you need to do is add \texttt{-fopenmp} to \texttt{FFLAGS} and \texttt{LDFLAGS} in your \texttt{Makefile} and add a few directives to your code.
     For example
 \begin{lstlisting}[caption=, nolol]
-!$omp parallel do
-do i = 1, n
-    y(i) = x(i) * i
-end do
-!$omp end parallel do
+  !$omp parallel do
+  do i = 1, n
+      y(i) = x(i) * i
+  end do
+  !$omp end parallel do
 \end{lstlisting}
     will execute the loop in parallel. Use Google for more information on how to use OpenMP.
   \item\textbf{Don't use more threads than you have physical cores.} This may seem like stating the obvious, but it actually happens rather often.
@@ -775,10 +775,10 @@ This does a few things for you:
   \item \texttt{git commit -m ``Initial commit''} takes everything in the index and adds it to the history with the description ``Initial commit''.
 \end{itemize}
 You can add future changes in \texttt{myProg.f90} to the history in a similar way:
-\begin{verbatim}
-$ git add myProg.f90              # or . to add everything
-$ git commit -m ``Fixed bug XYZ'' # use a msg appropriate for your changes
-\end{verbatim}
+\begin{lstlisting}[style=Bash,nolol]
+  $ git add myProg.f90              # or . to add everything
+  $ git commit -m ``Fixed bug XYZ'' # use a msg appropriate for your changes
+\end{lstlisting}
 If, after some bleary-eyed, hungover coding, you realize you've made a horrible mistake since your last commit, you can check a file's current state against the most recent history with
 \begin{verbatim}
 $ git diff <file>
