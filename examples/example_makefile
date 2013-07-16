@@ -14,11 +14,11 @@ OBJS += myprog.o
 all: myprog
 
 myprog: $(OBJS)
-    $(LINK) -o $@ $^ $(LIBS)
+	$(LINK) -o $@ $^ $(LIBS)
 
 %.o: %.f90
-    $(COMPILE) -o $@ -c $<
+	$(COMPILE) -o $@ -c $<
 
 .PHONY: clean
 clean:
-    $(RM) myprog $(OBJS) *.mod
+	$(RM) myprog $(OBJS) *.mod
