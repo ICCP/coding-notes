@@ -51,7 +51,7 @@
     gobble=2 % Allow indentation in LaTeX source for readibility
 }
 
-\lstdefinestyle{Bash}{
+\lstdefinestyle{prompt}{
   language=bash,
   caption=,
   commentstyle=\itshape\color{gray},
@@ -70,7 +70,7 @@
 
 \begin{document}
 
-\title{ICCP Coding Notes}
+\title{ICCP Coding Manual}
 \author{Connor Glosser, Jos Seldenthuis, Chris Verzijl, \\ 
   Erin McGarrity, and Jos Thijssen}
   \titlepic{
@@ -138,7 +138,7 @@ You can install it by replacing the \texttt{gfortran} items with
 Once you have \texttt{gfortran} installed, you can start writing programs.
 You will generally compile and run your programs from a terminal window (also called a \emph{console}).
 A few useful commands are:
-\begin{lstlisting}[style=Bash, nolol]
+\begin{lstlisting}[style=prompt, nolol]
   $ ls              # display the contents of the current directory
   $ ls -l           # display contents with extra details
   $ cp file path    # copy 'file' to 'path'
@@ -152,7 +152,7 @@ A few useful commands are:
 \end{lstlisting}
 
 For your first program, open a terminal, create a directory for ICCP files and open your first Fortran file by typing
-\begin{lstlisting}[style=Bash, nolol]
+\begin{lstlisting}[style=prompt, nolol]
   $ mkdir iccp          # create a new directory called 'iccp'
   $ cd iccp             # move to the new directory
   $ gedit myprog.f90    # open a text editor with the file 'myprog.f90'
@@ -785,7 +785,7 @@ This does a few things for you:
   \item \texttt{git commit -m ``Initial commit''} takes everything in the index and adds it to the history with the description ``Initial commit''.
 \end{itemize}
 You can add future changes in \texttt{myProg.f90} to the history in a similar way:
-\begin{lstlisting}[style=Bash,nolol]
+\begin{lstlisting}[style=prompt,nolol]
   $ git add myProg.f90              # or . to add everything
   $ git commit -m ``Fixed bug XYZ'' # use a msg appropriate for your changes
 \end{lstlisting}
