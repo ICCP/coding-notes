@@ -7,6 +7,7 @@
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{microtype}
+\usepackage{nag}
 \usepackage{titlepic}
 \usepackage{fancyhdr}
 \usepackage{listings}
@@ -21,19 +22,23 @@
 
 %\geometry{a4paper} % May funkify floating listings
 
+\definecolor{TUBlue}{RGB}{61,152,222}
+\definecolor{SpartanGreen}{RGB}{24,69,59}
+
+
 \hypersetup{
     colorlinks=true,
-    citecolor=blue,
-    linkcolor=blue,
-    urlcolor=blue
+    citecolor=Blue,
+    linkcolor=Blue,
+    urlcolor=Blue
 }
 
 \lstset{
     language=fortran,
     basicstyle=\ttfamily,
-    commentstyle=\itshape\color{gray},
-    keywordstyle=\bfseries\color{DarkBlue},
-    stringstyle=\color{DarkRed},
+    commentstyle=\itshape\color{Blue},
+    keywordstyle=\bfseries\color{DarkRed},
+    stringstyle=\color{Magenta},
     columns=fixed,
     numbers=left,
     numberstyle=\footnotesize\color{lightgray},
@@ -43,24 +48,25 @@
     firstnumber=auto,
     frame=single,
     rulesepcolor=\color{black},
-    gobble=2
+    gobble=2 % Allow indentation in LaTeX source for readibility
 }
 
 \lstdefinestyle{Bash}{
   language=bash,
   caption=,
+  commentstyle=\itshape\color{gray},
   keywordstyle=\ttfamily,
   numbers=none,
   frame=none
 }
 
-\newcommand{\keyword}[1]{\texttt{\bfseries\color{DarkBlue}#1}}
-\newcommand{\str}[1]{\texttt{\color{DarkRed}#1}}
+\newcommand{\keyword}[1]{\texttt{\bfseries\color{DarkRed}#1}}
+\newcommand{\str}[1]{\texttt{\color{Magenta}#1}}
 
 \renewenvironment{quote}{\list{}{\leftmargin=8\parindent}\item\relax}{\endlist}
 
-\widowpenalty=3000
-\clubpenalty=3000
+%\widowpenalty=3000
+%\clubpenalty=3000
 
 \begin{document}
 
@@ -231,7 +237,7 @@ Readability is the most important quality of your code.
 It's more important even than being bug-free; you can fix a readable but incorrect program, while an unreadable program is next to useless even if it works.
 As an example of what not to do, take a look at the gem in \autoref{lst:snppic}.
 \lstinputlisting[float=htb,label=lst:snppic]{examples/snppic.f}
-Originally written in FORTRAN IV for an IBM 1130 (in 1969!), it is a perfect example of spaghetti code; it makes me want to pick out my eyes with a fondue fork.
+Originally written in FORTRAN IV for an IBM 1130 (in 1969!), it is a perfect example of spaghetti code and it makes me want to pick out my eyes with a fondue fork.
 If you can figure out what it does, I'll buy you a beer.\footnote{It's part of one of the first open source programs in history, so no snooping with Google!}
 
 To keep your code readable, you need to structure your program in a smart way while following a reasonable coding style.
@@ -517,7 +523,7 @@ This will give you an idea of the most likely bottleneck in your code.
   \item All scalar operations are $\mathcal{O}(1)$, \ie, constant time.
     Integer operations are much faster than floating-point operations.
     Addition and subtraction are the fastest, followed by multiplication and finally division.
-    Functions like \texttt{sqrt}, \texttt{exp}, \texttt{log}, \texttt{sin}, \texttt{cos}, \emph{etc.}, are not always available as single processor instructions, especially for complex numbers, in which case they are implemented as actual function calls.
+    Functions like \keyword{sqrt}, \keyword{exp}, \keyword{log}, \keyword{sin}, \keyword{cos}, \emph{etc.}, are not always available as single processor instructions, especially for complex numbers, in which case they are implemented as actual function calls.
     It goes without saying that this is much slower than basic arithmetic.
   \item Scaling a vector or a matrix means performing an operation on each element.
     The complexity is therefore $\mathcal{O}(n)$ for vectors and $\mathcal{O}\left(n^2\right)$ for matrices, where $n$ is the dimension.
@@ -658,7 +664,7 @@ The \texttt{pkg-config} command will generate the correct compiler flags on the 
 
 As a quick introduction to using PLplot, we'll go through \autoref{lst:PLplotDemo} step by step:
 \lstinputlisting[float=htbp,label=lst:PLplotDemo,lastline=43]{examples/PLplotDemo.f90}
-\lstinputlisting[caption=PLplotDemo (continued),float=htbp,label=lst:PLplotDemo,firstline=44,firstnumber=44]{examples/PLplotDemo.f90}
+\lstinputlisting[caption=PLplotDemo (continued),float=htbp,label=lst:PLplotDemo2,firstline=44,firstnumber=44]{examples/PLplotDemo.f90}
 \begin{itemize}
   \item \texttt{\keyword{use} plplot} imports the PLplot functions and subroutines into our program.
   \item \texttt{\keyword{call} plparseopts(PL\_PARSE\_FULL)} parses any command-line arguments of your program that are relevant for PLplot (see below).
