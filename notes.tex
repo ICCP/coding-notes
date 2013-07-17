@@ -2,6 +2,7 @@
 
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{cag}
 \usepackage{float}
 \usepackage{geometry}
 \usepackage{graphicx}
@@ -18,7 +19,7 @@
 
 \pagestyle{fancy}
 
-%\geometry{a4paper}
+%\geometry{a4paper} % May funkify floating listings
 
 \hypersetup{
     colorlinks=true,
@@ -125,7 +126,8 @@ $ sudo aptitude install gfortran gfortran-doc
 \emph{Note that anything you type in the console is case-sensitive!} 
 This uses aptitude, a front-end to the package manager, to search for and install the \texttt{gfortran} package and its documentation.
 You may also find it useful to install the \LaTeX\ typesetting system for writing reports.
-You can install it by replacing \texttt{gfortran} with \texttt{texlive} in the command above.
+You can install it by replacing the \texttt{gfortran} items with 
+\texttt{texlive} (or \texttt{texlive-full} to install all \LaTeX\ packages) in the command above.
 
 Once you have \texttt{gfortran} installed, you can start writing programs.
 You will generally compile and run your programs from a terminal window (also called a \emph{console}).
@@ -150,7 +152,6 @@ For your first program, open a terminal, create a directory for ICCP files and o
   $ gedit myprog.f90    # open a text editor with the file 'myprog.f90'
 \end{lstlisting}
 The gedit text editor pops open in which you can type the program in \autoref{lst:myProg}.
-\lstinputlisting[float=htbp,label=lst:myProg]{examples/myProg.f90}
 It is probably obvious what this program does. However, a few remarks are in order:
 \begin{itemize}
   \item The program starts with a declaration of variables.
@@ -162,10 +163,12 @@ It is probably obvious what this program does. However, a few remarks are in ord
     Although Fortran is case-insensitive, it is considered good practice to always use uppercase names for constant variables.
   \item Note the calculation of $\pi$ as $4\arctan(1)$---convenient and accurate.
   \item Single-precision (4 byte) floating-point numbers can be written as \texttt{0.1} or \texttt{1e-1} (scientific notation). 
-    For double-precision numbers, use \texttt{d} instead of \texttt{e} in scientific notation, \emph{e.g.}, \texttt{1d-1}. 
+    For double-precision numbers, use \texttt{d} instead of \texttt{e} in scientific notation, \eg, \texttt{1d-1}. 
     It is also possible to specify the precision as a suffix: \texttt{1.0\_4} for single and \texttt{1.0\_8} for double precision. 
     This also works for integers.
-  \item \texttt{\keyword{integer} :: fibonacci(N)} allocates an array of 20 integers, with the array index\footnote{Fortran array indices can start wherever you want them to, though the default is to start at 1.} running from 1 to 20.
+  \item \texttt{\keyword{integer} :: fibonacci(N)} allocates an array of 20 
+    integers, with the array index\footnote{Fortran array indices can start at 
+    any integer by specifying a lower and upper bound separated with a colon.} running from 1 to 20.
   \item `\texttt{*}' is multiplication, `\texttt{**}' is exponentiation.
   \item The \keyword{print} statement on line 24 contains the formatting string \str{"(4I6)"}. 
     This tells Fortran to print 4 integers per line, each taking up 6 characters.
@@ -214,9 +217,10 @@ $ gfortran -Wall -Wextra -march=native -O3 myprog.f90 -o myprog
     Segfaults usually occur because you've run an index off the end of an array, so compiling with this flag turns on runtime bounds checking (at the expense of significantly reduced performance).
 \end{itemize}
 If the program compiled correctly, you can run it by typing \texttt{./a.out} or \texttt{./myprog}.
-Note that \texttt{./} specifies the \emph{path}, \emph{i.e.}, the location where to find the program.
+Note that \texttt{./} specifies the \emph{path}, \ie, the location where to find the program.
 The dot means the current directory, and the slash separates directories and file names (like the backslash in DOS and Windows).
 
+\lstinputlisting[float=h!,label=lst:myProg]{examples/myProg.f90}
 \chapter[Structuring your code]{Structuring your code (to keep your instructors sane!)}
 \label{chap:Structure}
 
@@ -226,7 +230,7 @@ The dot means the current directory, and the slash separates directories and fil
 Readability is the most important quality of your code.
 It's more important even than being bug-free; you can fix a readable but incorrect program, while an unreadable program is next to useless even if it works.
 As an example of what not to do, take a look at the gem in \autoref{lst:snppic}.
-\lstinputlisting[float=htbp,label=lst:snppic]{examples/snppic.f}
+\lstinputlisting[float=htb,label=lst:snppic]{examples/snppic.f}
 Originally written in FORTRAN IV for an IBM 1130 (in 1969!), it is a perfect example of spaghetti code; it makes me want to pick out my eyes with a fondue fork.
 If you can figure out what it does, I'll buy you a beer.\footnote{It's part of one of the first open source programs in history, so no snooping with Google!}
 
@@ -250,7 +254,7 @@ We can do this in Fortran, with the subroutine seen in \autoref{lst:SumsBeforeGa
 Fortran subroutines are invoked with the keyword \keyword{call} followed by the name of the routine and an optional list of parameters in parentheses.
 The code for the subroutine itself appears after the keyword \keyword{contains}.
 We don't have to type \keyword{implicit none} again, since that's inherited from the program.
-When declaring the parameters, we need to specify not only the type, but also how we're going to use them, \emph{i.e.}, the \emph{intent}.
+When declaring the parameters, we need to specify not only the type, but also how we're going to use them, \ie, the \emph{intent}.
 For input and output parameters, we use \texttt{\keyword{intent}(\keyword{in})} and \texttt{\keyword{intent}(\keyword{out})}, respectively.
 For parameters functioning as both, we use \texttt{\keyword{intent}(\keyword{inout})}.
 
@@ -304,7 +308,7 @@ $ make clean
 \end{verbatim}
 The \texttt{make} program is smart enough to only compile files that have changed; so if you just fixed a bug in \texttt{file6.f90}, it will only recompile that file (generating \texttt{file6.o}) and perform the linking step, without touching the other files.
 
-\lstinputlisting[language=,showtabs=true,float=hp,label=lst:example_makefile]{examples/example_makefile}
+\lstinputlisting[language=,showtabs=true,float=htb,label=lst:example_makefile]{examples/example_makefile}
 So, what does a \texttt{Makefile} look like? As an example, let's go through \autoref{lst:example_makefile} step by step.
 \begin{itemize}
   \item The first lines declare a few variables for later use.
@@ -315,7 +319,7 @@ So, what does a \texttt{Makefile} look like? As an example, let's go through \au
     You can link such a library with your program by specifying the \texttt{-llapack} argument to the linker.
     Note that you have to omit both \texttt{lib} and the extension (\texttt{.a} or \texttt{.so}) from the library name.
     Since libraries have to appear after the object files for the linker, they are specified in the separate variable \texttt{LIBS}.
-    If the library cannot be found in the system paths, you can tell the compiler to search for it in the directory \texttt{\emph{PATH}} by adding the option \texttt{-L\emph{PATH}} to \texttt{LDFLAGS}, \emph{e.g.}, \texttt{LDFLAGS = -L\$HOME/mylib}.
+    If the library cannot be found in the system paths, you can tell the compiler to search for it in the directory \texttt{\emph{PATH}} by adding the option \texttt{-L\emph{PATH}} to \texttt{LDFLAGS}, \eg, \texttt{LDFLAGS = -L\$HOME/mylib}.
   \item Makefiles are built around rules, which have the form `\texttt{\emph{target}: \emph{dependencies}}' followed by some lines with the commands needed to create the target from the dependencies.
     Except for a few special targets, such as \texttt{all} and \texttt{clean}, \texttt{make} will assume the target is a file, and try to recreate it if the target is older than the dependencies.
     \emph{Note that the lines with the build commands must start with a tab character, not spaces!}
@@ -369,7 +373,7 @@ Even if you do follow these rules---\emph{and you should!}---you will run into b
 Often they can be fixed by backtracking and checking every intermediate step, but bugs can be elusive.
 In those cases a debugger comes in handy.
 To use a debugger under Ubuntu, install the \texttt{gdb} and \texttt{ddd} packages.
-You'll also need to compile your program with the \texttt{-g} flag to generate debug symbols, and turn off any optimizations as they might reorder expressions in your code, \emph{e.g.},
+You'll also need to compile your program with the \texttt{-g} flag to generate debug symbols, and turn off any optimizations as they might reorder expressions in your code, \eg,
 \begin{verbatim}
 $ gfortran -Wall -Wextra -march=native -g myprog.f90 -o myprog
 \end{verbatim}
@@ -476,13 +480,13 @@ Guess which is both faster and more readable?
 \end{itemize}
 These optimizations are more about preventing your code from becoming unnecessarily slow, than trying to squeeze the last drop of performance out of it.
 Besides, low-level optimizations generally yield only about a factor of 2 speedup, and that's if you know what you're doing.
-Profiling your code to determine bottlenecks and optimizing your algorithms by improving scalability is where you'll find real speedups.
+To see real speedups, you're better off profiling your code to determine bottlenecks and optimizing your algorithms by improving scalability.
 
 \section{Scalability; or, the importance of big O}
 
 If you want your program to be fast, choose your algorithms carefully.
 The fact that you can approximate an integral by a simple sum does not mean that's the best way to do it.
-In fact, the naive approach is often the worst method, both in terms of computational complexity, \emph{i.e.}, how much more expensive the calculation becomes when you increase the size of the problem, and numerical accuracy, \emph{i.e.}, how small the error becomes when you increase the number of steps/iterations.
+In fact, the \naive\ approach is often the worst method, both in terms of computational complexity, \ie, how much more expensive the calculation becomes when you increase the size of the problem, and numerical accuracy, \ie, how small the error becomes when you increase the number of steps/iterations.
 Both the complexity and the accuracy of an algorithm are generally quantified using \emph{big O} notation.
 Big O notation is essentially a Taylor expansion of your algorithm; usually in the step size $h$ to approximate the error, or the dimension $n$ to approximate the computation time.
 In general, only the highest or lowest power matters, since that will be the dominant term for large $n$ or small $h$.
@@ -493,24 +497,24 @@ Some algorithms, such as the famous Coppersmith-Winograd algorithm for matrix mu
 Long story short; spend some time doing research before you start coding.
 Look at different algorithms, compare their accuracies and complexities---don't forget the complexity of implementation!---and only then start writing.
 Don't just go for the seemingly obvious approach.
-For example, naively integrating an ordinary differential equation (ODE), \emph{i.e.}, using the Euler method, will make an error of order $\mathcal{O}\left(h^2\right)$ at each integration step, giving a total error of $\mathcal{O}(h)$.
+For example, \naively\ integrating an ordinary differential equation (ODE), \eg, using the Euler method, will make an error of order $\mathcal{O}\left(h^2\right)$ at each integration step, giving a total error of $\mathcal{O}(h)$.
 Moreover, this method is unstable, meaning that for stiff equations the solution will oscillate wildly and the error grow very large.
 The Runge-Kutta method, on the other hand, makes an error of $\mathcal{O}\left(h^5\right)$ per step, giving a total error of $\mathcal{O}\left(h^4\right)$ (which is why it's generally referred to as `RK4').
 Additionally, the method is numerically stable.
-%Alternatively, the velocity Verlet algorithm has a global error of $\mathcal{O}\left(h^2\right)$, but it is symplectic, \emph{i.e.}, it is time-reversible and conserves (a discrete version of the) energy.
-%This makes it ideal for, \emph{e.g.}, molecular dynamics simulations.
+%Alternatively, the velocity Verlet algorithm has a global error of $\mathcal{O}\left(h^2\right)$, but it is symplectic, \ie, it is time-reversible and conserves (a discrete version of the) energy.
+%This makes it ideal for, \eg, molecular dynamics simulations.
 Many such methods are significantly more accurate than the Euler method, without being harder to implement.
-Moreover, better scaling of the error means that they need fewer iterations, making them also much faster; it's a win-win.
+Furthermore, better scaling of the error means that they need fewer iterations, making them also much faster; it's a win-win.
 
 Numerical analysis is a large field, and it can be quite daunting trying to understand the merits of different methods, or even finding them.
 For this, we recommend the book \emph{Numerical Recipes}.
 It covers a wide range of topics, focuses on best practices, and does not ignore coding effort when comparing algorithms.
-It even includes the full source code of the implementations! We recommend always using it as your starting point, with one exception: linear algebra (see appendix).
+It even includes the full source code of the implementations! We recommend always using it as your starting point, with one exception: linear algebra (see \autoref{chap:Linear algebra}).
 
 We conclude this section with an overview of the computational complexity of certain common operations.
 This will give you an idea of the most likely bottleneck in your code.
 \begin{itemize}
-  \item All scalar operations are $\mathcal{O}(1)$, \emph{i.e.}, constant time.
+  \item All scalar operations are $\mathcal{O}(1)$, \ie, constant time.
     Integer operations are much faster than floating-point operations.
     Addition and subtraction are the fastest, followed by multiplication and finally division.
     Functions like \texttt{sqrt}, \texttt{exp}, \texttt{log}, \texttt{sin}, \texttt{cos}, \emph{etc.}, are not always available as single processor instructions, especially for complex numbers, in which case they are implemented as actual function calls.
@@ -520,13 +524,13 @@ This will give you an idea of the most likely bottleneck in your code.
   \item Vector addition and taking an inner product are $\mathcal{O}(n)$, matrix addition is $\mathcal{O}\left(n^2\right)$.
   \item Matrix-vector multiplication means taking an inner product for each row, so the complexity is $\mathcal{O}\left(n^2\right)$.
   \item Solving a system of linear equations is also $\mathcal{O}\left(n^2\right)$, but the prefactor is much larger than for matrix-vector multiplication.
-  \item Naive matrix-matrix multiplication is $\mathcal{O}\left(n^3\right)$.
+  \item \Naive\ matrix-matrix multiplication is $\mathcal{O}\left(n^3\right)$.
     Libraries such as BLAS and LAPACK are smarter and do it in $\mathcal{O}\left(n^{\log_2(7)}\right)\approx\mathcal{O}\left(n^{2.807}\right)$.
     Another reason to not write this yourself.\footnote{The Fortran intrinsic \texttt{matmul} is actually implemented using BLAS.}
-  \item Taking the inverse of a matrix and calculating the eigenvalues/eigenvectors are both $\mathcal{O}\left(n^3\right)$.
+  \item Taking the inverse of\ a matrix and calculating the eigenvalues/eigenvectors are both $\mathcal{O}\left(n^3\right)$.
     However, eigendecomposition has a much larger prefactor and is therefore significantly slower.
     It is logically the most expensive matrix operation, since all operations on a diagonal matrix are $\mathcal{O}(n)$.
-  \item Iterative algorithms like conjugate-gradient or Krylov-subspace methods are supra-\linebreak convergent in the number of iterations, \emph{i.e.}, the error decreases by a constant factor at each iteration.
+  \item Iterative algorithms like conjugate-gradient or Krylov-subspace methods are supra-\linebreak convergent in the number of iterations, \ie, the error decreases by a constant factor at each iteration.
     They are especially suitable for sparse matrices, since each iteration is $\mathcal{O}(n)$, where $n$ is the number of non-zero elements instead of the dimension.
 \end{itemize}
 
@@ -581,7 +585,7 @@ Remember: you will be spending a lot more time reading your code than writing it
   \item\textbf{Modules}---Separate your program into logical units.
     Combine related functions and subroutines into modules.
     For example, a single module with function integrators, or ODE solvers.
-    If you use the object-oriented features of Fortran, it is also good practice to create separate modules for classes, \emph{e.g.}, a sparse-matrix object.
+    If you use the object-oriented features of Fortran, it is also good practice to create separate modules for classes, \eg, a sparse-matrix object.
   \item\textbf{Comments}---Comments are kind of a double-edged sword.
     If used wrongly, they can actually hurt readability.
     The golden rule is: never explain \emph{how} it works, just \emph{what} it does.
@@ -635,7 +639,7 @@ Plotting the results of your calculation from Fortran is easiest with PLplot.
 PLplot is a cross-platform scientific plotting package with support for multiple programming languages.
 Under Ubuntu, you need to install the packages \texttt{libplplot-dev} and \texttt{plplot11-driver-cairo}.
 The \texttt{plplot-doc} package might also come in handy.
-If you have it installed, you can access the documentation of, \emph{e.g.}, the \texttt{plline} subroutine by typing
+If you have it installed, you can access the documentation of, \eg, the \texttt{plline} subroutine by typing
 \begin{verbatim}
 $ man plline
 \end{verbatim}
@@ -699,7 +703,7 @@ We end the program with
 The call to \texttt{plspause} makes sure the program terminates after the animation finishes, instead of leaving the last frame on screen indefinitely.
 
 We plot particles by calling the following subroutine:
-\lstinputlisting[firstline=13, firstnumber=13, caption=, nolol]{examples/PLplot3D.f90}
+\lstinputlisting[firstline=14, firstnumber=14, caption=, nolol]{examples/PLplot3D.f90}
 \texttt{xyz} is a $3\times n$ array, with the first row containing the $x$ coordinates of the particles, the second the $y$, and the third the $z$ coordinates.
 We first clear the screen with \texttt{plclear}, then draw the axis with \texttt{plbox3}, and finally the particles with \texttt{plpoin3}.
 The particles are drawn as small circles (code 4).
