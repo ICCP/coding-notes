@@ -62,6 +62,7 @@
 
 \newcommand{\keyword}[1]{\texttt{\bfseries\color{DarkRed}#1}}
 \newcommand{\str}[1]{\texttt{\color{Magenta}#1}}
+\newcommand{\Chapter}[2]{\chapter[#1]{#1\\[1ex]\Large#2}} 
 
 \renewenvironment{quote}{\list{}{\leftmargin=8\parindent}\item\relax}{\endlist}
 
@@ -227,7 +228,7 @@ Note that \texttt{./} specifies the \emph{path}, \ie, the location where to find
 The dot means the current directory, and the slash separates directories and file names (like the backslash in DOS and Windows).
 
 \lstinputlisting[float=h!,label=lst:myProg]{examples/myProg.f90}
-\chapter[Structuring your code]{Structuring your code (to keep your instructors sane!)}
+\Chapter{Structuring your code}{(to keep your instructors sane!)}
 \label{chap:Structure}
 
 \begin{quote}\small
@@ -347,7 +348,7 @@ So, what does a \texttt{Makefile} look like? As an example, let's go through \au
 \end{itemize}
 In the rest of these notes we will assume that you have created a \texttt{Makefile} for each project based on this template.
 
-\chapter[Debugging]{Debugging; or, where you'll be spending 90\% of your time}
+\Chapter{Debugging}{(or, where you'll spend 90\% of your time)}
 \label{chap:Debugging}
 
 \begin{quote}\small
@@ -399,7 +400,8 @@ You can inspect variables by right-clicking on the name and selecting `Print x' 
 Play around with the debugger for a while until you're comfortable using it.
 It will come in very handy when you're hunting bugs, and as we said before, that's what you'll be spending most of your time on.
 
-\chapter[Optimization]{Optimization---where you shouldn't spend 90\% of your time}
+\Chapter{Optimization}{(or, where you \emph{shouldn't} spend 90\% of your time)}
+%\chapter[Optimization]{Optimization (or where you \emph{shouldn't} spend 90\% of your time)}
 \label{chap:Optimization}
 
 \begin{quote}\small
@@ -719,7 +721,8 @@ Although this works quite well for checking the movement of particles, PLplot is
 We therefore recommend not plotting every step in your simulation, but skipping a few frames.
 For more documentation on PLplot, Google is your friend.
 
-\chapter[Parallel computing]{Parallel computing: employing a thousand monkeys}
+\Chapter{Parallel computing}{employing a thousand monkeys}
+%\chapter[Parallel computing]{Parallel computing: employing a thousand monkeys}
 \label{chap:Parallel computing}
 
 \begin{quote}\small
@@ -758,7 +761,7 @@ While a true introduction is outside the scope of these notes, we'll give a few 
   In that case doubling the number of threads will actually harm performance.
 \end{itemize}
 
-\chapter[Revision control]{A word on revision control}
+\chapter{Revision control}
 \label{chap:Revision control}
 
 \begin{quote}
@@ -830,11 +833,11 @@ You can then download any future changes to the repository with a \texttt{git pu
   \item \href{http://gitready.com/}{Git Ready}---detailed description of common use patterns.
 \end{itemize}
 
-\chapter[Further reading]{Further reading (i.e.\ programmer humor)}
+\Chapter{Further reading}{a.k.a\ programmer humor}
 \begin{itemize}
-  \item \url{http://www.pbm.com/~lindahl/real.programmers.html} (\textbf{Mandatory})
-  \item \url{http://james-iry.blogspot.com/2009/05/brief-incomplete-and-mostly-wrong.html}
-  \item \url{https://www.gnu.org/fun/jokes/ed-msg.html}
-  \item \url{http://blog.sanctum.geek.nz/vim-koans/}
+  \item \href{http://www.pbm.com/~lindahl/real.programmers.html}{Real programmers don't use Pascal} (\textbf{Mandatory})
+  \item \href{http://james-iry.blogspot.com/2009/05/brief-incomplete-and-mostly-wrong.html}{A Brief, Incomplete, and Mostly Wrong History of Programming}
+  \item \href{https://www.gnu.org/fun/jokes/ed-msg.html}{\texttt{Ed, man! !man ed}}
+  \item \href{http://blog.sanctum.geek.nz/vim-koans/}{Vim koans}
 \end{itemize}
 \end{document}
