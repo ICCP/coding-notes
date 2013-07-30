@@ -163,7 +163,7 @@ It is probably obvious what this program does. However, a few remarks are in ord
 \begin{itemize}
   \item The program starts with a declaration of variables.
     \texttt{\keyword{real}(8)} denotes a floating-point variable with double (8 byte) precision. 
-    Similarly, \keyword{integer} denotes an integer number.
+    Similarly, \keyword{integer} denotes an integer number.\footnote{Fortran intrisic types include \keyword{logical}, \keyword{integer}, \keyword{real}, \keyword{complex}, and \keyword{character} data.}
     Not specifying a size generally defaults to 4-byte precision.
     \keyword{implicit none} prevents Fortran from trying to infer the type from the variable name, which is a major source of bugs---\emph{always include this!}
   \item The attribute \keyword{parameter} specifies that we are declaring a constant.
@@ -174,7 +174,7 @@ It is probably obvious what this program does. However, a few remarks are in ord
     It is also possible to specify the precision as a suffix: \texttt{1.0\_4} for single and \texttt{1.0\_8} for double precision. 
     This also works for integers.
   \item \texttt{\keyword{integer} :: fibonacci(N)} allocates an array of 20 
-    integers, with the array index\footnote{Fortran array indices can start at 
+    integers, with the array index\footnote{Array indices can start at 
     any integer by specifying a lower and upper bound separated with a colon.} running from 1 to 20.
   \item `\texttt{*}' is multiplication, `\texttt{**}' is exponentiation.
   \item The \keyword{print} statement on line 24 contains the formatting string \str{"(4I6)"}. 
