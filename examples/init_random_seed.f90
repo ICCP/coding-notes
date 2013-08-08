@@ -6,16 +6,12 @@ subroutine init_random_seed()
 
   call random_seed(size = n)
   allocate(seed(n))
-  ! First try if the OS provides a random number generator
   open(newunit=un, file="/dev/urandom", access="stream", &
        form="unformatted", action="read", status="old", iostat=istat)
   if (istat == 0) then
      read(un) seed
      close(un)
   else
-     ! Fallback to XOR:ing the current time and pid. The PID is
-     ! useful in case one launches multiple instances of the same
-     ! program in parallel.
      call system_clock(count)
      if (count /= 0) then
         t = transfer(count, t)
