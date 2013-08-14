@@ -77,7 +77,7 @@
   \titlepic{
     \begin{figure}[b]
       \centering
-      \includegraphics[width=0.33\pdfpagewidth]{MSU_logo.pdf}\hfill \includegraphics[width=0.33\pdfpagewidth]{TU_logo.pdf}
+      \includegraphics[width=0.33\pdfpagewidth]{figures/MSU_logo.pdf}\hfill \includegraphics[width=0.33\pdfpagewidth]{figures/TU_logo.pdf}
     \end{figure}
   }
 \maketitle
@@ -127,14 +127,16 @@ Ask your instructor.}
 
 After booting Ubuntu, you need to install a Fortran compiler.
 Open a terminal and at the prompt (the \$) type
-\begin{verbatim}
-$ sudo aptitude install gfortran gfortran-doc
-\end{verbatim}
+\begin{lstlisting}[style=prompt, nolol]
+  $ sudo aptitude install gfortran gfortran-doc
+\end{lstlisting}
 \emph{Note that anything you type in the console is case-sensitive!} 
-This uses aptitude, a front-end to the package manager, to search for and install the \texttt{gfortran} package and its documentation.
+This command grants \texttt{aptitude} privilieges to search for and then install the \texttt{gfortran} package and its documentation.
 You may also find it useful to install the \LaTeX\ typesetting system for writing reports.
-You can install it by replacing the \texttt{gfortran} items with 
-\texttt{texlive} (or \texttt{texlive-full} to install all \LaTeX\ packages) in the command above.
+You can install it with another call to \texttt{aptitude}:
+\begin{lstlisting}[style=prompt, nolol]
+  $ sudo aptitude install texlive # or texlive-full for a complete installation
+\end{lstlisting}
 
 Once you have \texttt{gfortran} installed, you can start writing programs.
 You will generally compile and run your programs from a terminal window (also called a \emph{console}).
@@ -671,8 +673,8 @@ The \texttt{pkg-config} command will generate the correct compiler flags on the 
 \section{Plotting functions}
 
 As a quick introduction to using PLplot, we'll go through \autoref{lst:PLplotDemo} step by step:
-\lstinputlisting[float=htbp,label=lst:PLplotDemo,lastline=43]{examples/PLplotDemo.f90}
-\lstinputlisting[caption=PLplotDemo (continued),float=htbp,label=lst:PLplotDemo2,firstline=44,firstnumber=44]{examples/PLplotDemo.f90}
+\lstinputlisting[label=lst:PLplotDemo]{examples/PLplotDemo.f90}
+%\lstinputlisting[caption=PLplotDemo (continued),float=htbp,label=lst:PLplotDemo2,firstline=44,firstnumber=44]{examples/PLplotDemo.f90}
 \begin{itemize}
   \item \texttt{\keyword{use} plplot} imports the PLplot functions and subroutines into our program.
   \item \texttt{\keyword{call} plparseopts(PL\_PARSE\_FULL)} parses any command-line arguments of your program that are relevant for PLplot (see below).
@@ -824,20 +826,14 @@ That said, here are some tried and true tips to make the most of Git:
     Branching lets you test drive changes in a copy of your code in an easily-reset sandbox, the network features let you not only backup code but also collaborate with other developers, and \texttt{git-bisect} can even help you \emph{automatically} pinpoint exactly where and when a bug crept in!
 \end{itemize}
 
-You can find all of the example codes given here in the \href{https://Github.com/cglosser/libICCP}{libICCP repository} on Github. To use them, you'll want to clone (make a local copy\footnote{This copy is a complete backup of the repository. It contains the entire history, and may itself be cloned and pulled from.} of) the repository by typing
+You can find all of the example codes given in these notes at the \href{https://Github.com/cglosser/libICCP}{libICCP repository} on Github.
+To use them, you'll want to \texttt{clone}\footnote{A clone is a complete local backup of the repository. It contains the entire history, and may itself be cloned and pulled from.} the repository with
 \begin{verbatim}
 $ git clone git@github.com:cglosser/libICCP.git
 \end{verbatim}
-You can then download any future changes to the repository with a \texttt{git pull} command inside the libICCP directory.
+You can then download any future changes to the repository with a \texttt{git pull} command inside the libICCP directory 
 
-\section{Resources}
-
-\begin{itemize}
-  \item \href{http://learn.Github.com/p/index.html}{Github Learning}---walkthrough for learning to use both git and \href{https://Github.com}{Github}.
-  \item \href{http://git-scm.com/book}{Pro Git}---streamlined walkthrough for many topics, from setting up a repository to branching and rewriting history.
-  \item \href{http://think-like-a-git.net/}{Think Like a Git}---``advanced beginners'' reference, excellent discussion of branching/merging mechanics and workflow.
-  \item \href{http://gitready.com/}{Git Ready}---detailed description of common use patterns.
-\end{itemize}
+Because of Git's popularity, the internet has a number of fantastic resources for learning to use it. \href{http://learn.Github.com/p/index.html}{Github Learning}, \href{http://git-scm.com/book}{Pro Git}, \href{http://think-like-a-git.net/}{Think Like a Git}, and \href{http://gitready.com/}{Git Ready} all offer very good tutorials and explanations.
 
 \Chapter{Further reading}{a.k.a\ programmer humor}
 \begin{itemize}
