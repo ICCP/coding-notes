@@ -180,7 +180,8 @@ It is probably obvious what this program does. However, a few remarks are in ord
     any integer by specifying a lower and upper bound separated with a colon.} running from 1 to 20.
   \item `\texttt{*}' is multiplication, `\texttt{**}' is exponentiation.
   \item The \keyword{print} statement on line 24 contains the formatting string \str{"(4I6)"}. 
-    This tells Fortran to print 4 integers per line, each taking up 6 characters.
+    This tells Fortran to print 4 records of integer type per line, each taking up 6 characters.
+    Format strings for other datatypes include E$w.d$ (real -- decimal form), ES$w.d$ (real -- scientific form), EN$w.d$ (real -- engineering form), L$w$ (logical), and A (characters). Here, $w$ gives the width of a record and $d$ gives the number of places right of the decimal.
   \item Comments in Fortran start with `\texttt{!}' and last until the end of the line.
   \item Dividing integers \textcolor{red}{\textbf{results in an integer}}, so \texttt{3 / 2 = 1} instead of 1.5 as you might expect. 
     Multiplying by \texttt{1d0} on line 27 forces Fortran to do a double-precision floating-point calculation.
@@ -838,6 +839,7 @@ Because of Git's popularity, the internet has a number of fantastic resources fo
 \Chapter{Further reading}{a.k.a\ programmer humor}
 \begin{itemize}
   \item \href{http://www.pbm.com/~lindahl/real.programmers.html}{Real programmers don't use Pascal} (\textbf{Mandatory})
+  \item \href{https://gist.github.com/alanbriolat/3135713#file-fortran_hell-f95}{The many faces of function definition in Fortran 95} (\textbf{Mandatory})
   \item \href{http://james-iry.blogspot.com/2009/05/brief-incomplete-and-mostly-wrong.html}{A Brief, Incomplete, and Mostly Wrong History of Programming}
   \item \href{https://www.gnu.org/fun/jokes/ed-msg.html}{\texttt{Ed, man! !man ed}}
   \item \href{http://blog.sanctum.geek.nz/vim-koans/}{Vim koans}
