@@ -1,22 +1,24 @@
-\documentclass[openany,oneside]{report}
+\documentclass[openany,oneside]{book}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{cag}
+\usepackage{fancyhdr}
 \usepackage{float}
 \usepackage{geometry}
 \usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{listings}
 \usepackage{microtype}
 \usepackage{nag}
 \usepackage{titlepic}
-\usepackage{fancyhdr}
-\usepackage{listings}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
-\usepackage{hyperref}
 
 %\usepackage{arevmath}
 \usepackage{lmodern}
 \usepackage{bera}
+
+\usepackage{hyperref}
 
 \pagestyle{fancy}
 
@@ -77,14 +79,18 @@
   \titlepic{
     \begin{figure}[b]
       \centering
-      \includegraphics[width=0.33\pdfpagewidth]{figures/MSU_logo.pdf}\hfill \includegraphics[width=0.33\pdfpagewidth]{figures/TU_logo.pdf}
+      \includegraphics[width=0.33\pdfpagewidth]{figures/MSU_logo.pdf} \hfill
+      \includegraphics[width=0.33\pdfpagewidth]{figures/TU_logo.pdf}
     \end{figure}
   }
+
+\frontmatter
 \maketitle
 \tableofcontents
 %\lstlistoflistings
 
 \include{chapters/Introduction}
+\mainmatter
 \include{chapters/Getting_your_toes_wet}
 \include{chapters/Structuring_your_code}
 \include{chapters/The_magic_of_makefiles}
@@ -95,8 +101,7 @@
 \include{chapters/Plotting_with_plplot}
 \include{chapters/Parallel_computing}
 \include{chapters/Revision_control}
-
-
+\backmatter
 \Chapter{Further reading}{a.k.a\ programmer humor}
 \begin{itemize}
   \item \href{http://www.pbm.com/~lindahl/real.programmers.html}{Real programmers don't use Pascal} (\textbf{Mandatory})
@@ -105,4 +110,5 @@
   \item \href{https://www.gnu.org/fun/jokes/ed-msg.html}{\texttt{Ed, man! !man ed}}
   \item \href{http://blog.sanctum.geek.nz/vim-koans/}{Vim koans}
 \end{itemize}
+
 \end{document}
