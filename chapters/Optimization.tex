@@ -103,41 +103,41 @@ Some algorithms, such as the famous Coppersmith-Winograd algorithm for matrix mu
 Long story short; spend some time doing research before you start coding.
 Look at different algorithms, compare their accuracies and complexities---don't forget the complexity of implementation!---and only then start writing.
 Don't just go for the seemingly obvious approach.
-For example, \naively\ integrating an ordinary differential equation (ODE), \eg, using the Euler method, will make an error of order $\mathcal{O}\left(h^2\right)$ at each integration step, giving a total error of $\mathcal{O}(h)$.
+For example, \naively\ integrating an ordinary differential equation (ODE), \eg, using the Euler method, will make an error of order $\Oh{h^2}$ at each integration step, giving a total error of $\Oh{h}$.
 Moreover, this method is unstable, meaning that for stiff equations the solution will oscillate wildly and the error grow very large.
-The Runge-Kutta method, on the other hand, makes an error of $\mathcal{O}\left(h^5\right)$ per step, giving a total error of $\mathcal{O}\left(h^4\right)$ (which is why it's generally referred to as `RK4').
+The Runge-Kutta method, on the other hand, makes an error of $\Oh{h^5}$ per step, giving a total error of $\Oh{h^4}$ (which is why it's generally referred to as `RK4').
 Additionally, the method is numerically stable.
-%Alternatively, the velocity Verlet algorithm has a global error of $\mathcal{O}\left(h^2\right)$, but it is symplectic, \ie, it is time-reversible and conserves (a discrete version of the) energy.
+%Alternatively, the velocity Verlet algorithm has a global error of $\Oh{h^2\right)$, but it is symplectic, \ie, it is time-reversible and conserves (a discrete version of the) energy.
 %This makes it ideal for, \eg, molecular dynamics simulations.
 Many such methods are significantly more accurate than the Euler method, without being harder to implement.
 Furthermore, better scaling of the error means that they need fewer iterations, making them also much faster; it's a win-win.
 
 Numerical analysis is a large field, and it can be quite daunting trying to understand the merits of different methods, or even finding them.
-For this, we recommend the book \emph{Numerical Recipes}.
+For this, we recommend the book \emph{Numerical Recipes}\footnote{Available free online at \url{http://apps.nrbook.com/fortran/index.html}}.
 It covers a wide range of topics, focuses on best practices, and does not ignore coding effort when comparing algorithms.
 It even includes the full source code of the implementations! We recommend always using it as your starting point, with one exception: linear algebra (see \autoref{chap:Linear algebra}).
 
 We conclude this section with an overview of the computational complexity of certain common operations.
 This will give you an idea of the most likely bottleneck in your code.
 \begin{itemize}
-  \item All scalar operations are $\mathcal{O}(1)$, \ie, constant time.
+  \item All scalar operations are $\Oh{1}$, \ie, constant time.
     Integer operations are much faster than floating-point operations.
     Addition and subtraction are the fastest, followed by multiplication and finally division.
     Functions like \keyword{sqrt}, \keyword{exp}, \keyword{log}, \keyword{sin}, \keyword{cos}, \emph{etc.}, are not always available as single processor instructions, especially for complex numbers, in which case they are implemented as actual function calls.
     It goes without saying that this is much slower than basic arithmetic.
   \item Scaling a vector or a matrix means performing an operation on each element.
-    The complexity is therefore $\mathcal{O}(n)$ for vectors and $\mathcal{O}\left(n^2\right)$ for matrices, where $n$ is the dimension.
-  \item Vector addition and taking an inner product are $\mathcal{O}(n)$, matrix addition is $\mathcal{O}\left(n^2\right)$.
-  \item Matrix-vector multiplication means taking an inner product for each row, so the complexity is $\mathcal{O}\left(n^2\right)$.
-  \item Solving a system of linear equations is also $\mathcal{O}\left(n^2\right)$, but the prefactor is much larger than for matrix-vector multiplication.
-  \item \Naive\ matrix-matrix multiplication is $\mathcal{O}\left(n^3\right)$.
-    Libraries such as BLAS and LAPACK are smarter and do it in $\mathcal{O}\left(n^{\log_2(7)}\right)\approx\mathcal{O}\left(n^{2.807}\right)$.
-    Another reason to not write this yourself.\footnote{The Fortran intrinsic \texttt{matmul} is actually implemented using BLAS.}
-  \item Taking the inverse of\ a matrix and calculating the eigenvalues/eigenvectors are both $\mathcal{O}\left(n^3\right)$.
+    The complexity is therefore $\Oh{n}$ for vectors and $\Oh{n^2}$ for matrices, where $n$ is the dimension.
+  \item Vector addition and taking an inner product are $\Oh{n}$, matrix addition is $\Oh{n^2}$.
+  \item Matrix-vector multiplication means taking an inner product for each row, so the complexity is $\Oh{n^2}$.
+  \item Solving a system of linear equations is also $\Oh{n^2}$, but the prefactor is much larger than for matrix-vector multiplication.
+  \item \Naive\ matrix-matrix multiplication is $\Oh{n^3}$.
+    Libraries such as BLAS and LAPACK are smarter and do it in $\Oh{n^{\log_2(7)}}\approx\Oh{n^{2.807}}$.
+    Another reason to avoid writing this yourself.\footnote{The Fortran intrinsic \texttt{matmul} is actually implemented using BLAS.}
+  \item Taking the inverse of\ a matrix and calculating the eigenvalues/eigenvectors are both $\Oh{n^3}$.
     However, eigendecomposition has a much larger prefactor and is therefore significantly slower.
-    It is logically the most expensive matrix operation, since all operations on a diagonal matrix are $\mathcal{O}(n)$.
+    It is logically the most expensive matrix operation, since all operations on a diagonal matrix are $\Oh{n}$.
   \item Iterative algorithms like conjugate-gradient or Krylov-subspace methods are supra-\linebreak convergent in the number of iterations, \ie, the error decreases by a constant factor at each iteration.
-    They are especially suitable for sparse matrices, since each iteration is $\mathcal{O}(n)$, where $n$ is the number of non-zero elements instead of the dimension.
+    They are especially suitable for sparse matrices, since each iteration is $\Oh{n}$, where $n$ is the number of non-zero elements instead of the dimension.
 \end{itemize}
 
 

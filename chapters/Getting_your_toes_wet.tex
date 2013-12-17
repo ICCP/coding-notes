@@ -5,7 +5,7 @@
 \end{quote}
 
 For this course we recommend using the GNU Fortran compiler, as it is free and of reasonably high quality.\footnote{You're welcome to use the Intel Fortran compiler, which is free on Linux, but remember to change the compiler flags, since they differ from \texttt{gfortran}.}
-Linux is the platform of choice, since it's most suited to programming and high-performance computing.\footnote{As of this writing, 476 of the top 500 supercomputers in the world run some form of Linux.}
+Linux is the platform of choice, since it's most suited to programming and high-performance computing.\footnote{As of this writing, 476 of the TOP500 supercomputers in the world run some form of Linux.}
 OS~X, being a Unix variant, is also an option, but installing the required packages is generally a bit more work.
 In these notes we will assume that you're using Ubuntu.\footnote{You can use Ubuntu as a native installation, run it from a flash drive, under a virtual machine, or under Windows using Wubi.
 Ask your instructor.}
@@ -46,7 +46,7 @@ For your first program, open a terminal, create a directory for ICCP files and o
   $ gedit myprog.f90    # open a text editor with the file 'myprog.f90'
 \end{lstlisting}
 The gedit text editor pops open in which you can type the program in \autoref{lst:myProg}.
-It is probably obvious what this program does. However, a few remarks are in order:
+You can probably guess what this program does, however, a few remarks are in order:
 \begin{itemize}
   \item The program starts with a declaration of variables.
     \texttt{\keyword{real}(8)} denotes a floating-point variable with double (8 byte) precision.
@@ -112,6 +112,6 @@ $ gfortran -Wall -Wextra -march=native -O3 myprog.f90 -o myprog
 \end{itemize}
 If the program compiled correctly, you can run it by typing \texttt{./a.out} or \texttt{./myprog}.
 Note that \texttt{./} specifies the \emph{path}, \ie, the location where to find the program.
-The dot means the current directory, and the slash separates directories and file names (like the backslash in DOS and Windows).
+The dot means the current directory (similarly, \texttt{..} refers to the parent directory), and the slash separates directories and file names (like the backslash in DOS and Windows).
 
 \lstinputlisting[float=h!,label=lst:myProg]{examples/myProg.f90}

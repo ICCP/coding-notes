@@ -29,34 +29,37 @@ You can add future changes in \texttt{myProg.f90} to the history in a similar wa
   $ git add myProg.f90              # or . to add everything
   $ git commit -m ``Fixed bug XYZ'' # use a msg appropriate for your changes
 \end{lstlisting}
+Similarly, you can check the current status of the index with \texttt{git status}. 
+The output will display changes both staged and not staged in the index for the next commit, allowing you to tweak things as necessary.
+
 If, after some bleary-eyed, hungover coding, you realize you've made a horrible mistake since your last commit, you can check a file's current state against the most recent history with
 \begin{verbatim}
 $ git diff <file>
 \end{verbatim}
 And to delete any changes you've made
 \begin{verbatim}
-$ git checkout ./<file>
+$ git checkout <file>
 \end{verbatim}
 You can view the entire project history with the \texttt{gitk} program, including file diffs, commit messages, and authors. Similarly, \texttt{git gui} provides a handy interface for staging commits. You can write/ammend commit messages, see which files have changed and what files you've added to the index, push/pull to remote repositories, etc.
 
-There are only a handful of ways to completely delete data from the repository once you've committed it\footnote{Best to avoid the more dangerous commands like \texttt{git rebase} and \texttt{git gc}, and \emph{always} think about commands before you run them!}, so unless you're \emph{really} trying to rewrite history your code is reasonably safe from git-mishaps.
+There are only a handful of ways to completely delete data from the repository once you've committed it\footnote{It's a good idea to avoid the more dangerous commands like \texttt{git rebase} and \texttt{git gc}. \textcolor{red}{\emph{Always}} think about commands before you run them!}, so unless you're \emph{really} trying to rewrite history your code is reasonably safe from git-mishaps.
 That said, here are some tried and true tips to make the most of Git:
 \begin{itemize}
-  \item \textbf{Commit frequently}---The more commits you have, the more the history can help you.
+  \item \textbf{Commit frequently}. The more commits you have, the more the history can help you.
     If you're trying to find a problem introduced in a new subroutine, it's much easier to search through ten lines of code you added in the past half hour than the 200 lines you added since Monday.
-  \item \textbf{Commit \emph{logically}}---Commit complete logical units (like writing a function, fixing a bug, or formatting output) instead of just ``at the end of the day.''
-    This greatly helps in reasoning about the development of your code---and thus undoing problems!
-  \item \textbf{Use descriptive commit messages}---Messages like ``Fixed bug in force calculation'' and ``Implemented averaging function'' work far better than an endless series of ``nightly backup''s.
+  \item \textbf{Commit \emph{logically}}. Commit complete logical units (like writing a function, fixing a bug, or formatting output) instead of just ``at the end of the day.''
+    This greatly helps in reasoning about the development of your code. and thus undoing problems!
+  \item \textbf{Use descriptive commit messages}. Messages like ``Fixed bug in force calculation'' and ``Implemented averaging function'' work far better than an endless series of ``nightly backup''s.
     If you can't easily reason about what's changed in your code, tracking the changes will do very little to help you.
-  \item \textbf{Commit the bare minimum}---Only commit what's needed to recompile a functional program.
-    Git only tracks the differences in files between commits to save space, but executables, output data, PDFs, images, etc. all require a totally new copy in the history every time they change (and that's frequently!)
+  \item \textbf{Commit the bare minimum}. Only commit what's needed to recompile a functional program.
+    Git just tracks the differences in files between commits to save space, but executables, output data, PDFs, images, etc. all require a totally new copy in the history every time they change (and that's frequently!)
     Tracking a \texttt{.gitignore} file with some simple patterns can automatically ignore files of a similar type.
-  \item \textbf{Learn the advanced Git features}---Basic commits barely scratch the surface of Git's functionality.
-    Branching lets you test drive changes in a copy of your code in an easily-reset sandbox, the network features let you not only backup code but also collaborate with other developers, and \texttt{git-bisect} can even help you \emph{automatically} pinpoint exactly where and when a bug crept in!
+  \item \textbf{Learn the advanced Git features}. Basic commits barely scratch the surface of Git's functionality.
+    Branching lets you test drive changes in a copy of your code in an easily-reset sandbox, the network features let you not only backup code but also collaborate with other developers, and \texttt{git-bisect} can help you \emph{automatically} pinpoint exactly where and when a bug crept in.
 \end{itemize}
 
 You can find all of the example codes given in these notes at the \href{https://Github.com/cglosser/libICCP}{libICCP repository} on Github.
-To use them, you'll want to \texttt{clone}\footnote{A clone is a complete local backup of the repository. It contains the entire history, and may itself be cloned and pulled from.} the repository with
+To use them, you'll want to \texttt{clone}\footnote{A clone is a complete local backup of the repository. It contains the entire project history and may itself be cloned and pulled from.} the repository with
 \begin{verbatim}
 $ git clone git@github.com:cglosser/libICCP.git
 \end{verbatim}

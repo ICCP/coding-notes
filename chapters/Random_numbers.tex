@@ -1,4 +1,4 @@
-\chapter{Random numbers}
+\chapter{A short word on random numbers}
 \label{chap:Random numbers}
 \begin{figure}[h!]
   \centering
@@ -14,7 +14,5 @@ Computers generate random numbers by way of a proceedural mathematical formula, 
 The subroutine in \autoref{lst:init_random_seed} will seed the RNG with entropy collected by the system if it's available, otherwise it will use the current time \& process ID.
 \lstinputlisting[float=htbp,label=lst:init_random_seed]{examples/init_random_seed.f90}
 
-The Fortran random number generator produces uniformly distributed reals on the interval\footnote{Be careful with operations that might fail with \texttt{0.0d0}.} $\left[0, 1\right)$, but simulations often require numbers drawn from a different distribution.
-For convenience, we provide \autoref{lst:box_muller} for transforming two such numbers into two numbers with a standard normal distribution via a Box-Muller transform.
-\lstinputlisting[float=htbp,label=lst:box_muller]{examples/box_muller.f90}
-
+The Fortran random number generator produces uniformly distributed reals on the interval\footnote{Be careful with operations that might fail with \texttt{0.0d0}.} $\left[0, 1\right)$, but simulations often require numbers drawn from a different distribution. 
+For this, we again turn you to \emph{Numerical Recipes}; it has several means of generating nonuniform random deviates including rejection sampling for Gamma, Poisson, and Binomial distributions and the Box-Muller transform for normal distributions. 

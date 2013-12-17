@@ -16,8 +16,8 @@ While a true introduction is outside the scope of these notes, we'll give a few 
     Programs are much harder to debug when they run in parallel, so leave parallelization for the final step.
   \item\textbf{Check whether the bottleneck in your program benefits from parallelization.} Not every algorithm scales well.
     It would be a waste of time to spend effort parallelizing your code only to discover that it's now actually slower.
-  \item\textbf{Use OpenMP.}\footnote{OpenMP is available for C, C++ and Fortran.
-    If you are using C++, the \emph{Intel Threading Building Blocks} library is a possible alternative; it has high-level support for certain algorithms and data structures.} For ICCP you won't be using supercomputers or systems with multiple nodes.
+  \item\textbf{Use OpenMP.}\footnote{OpenMP is available for C, \Cplusplus and Fortran.
+    If you are using \Cplusplus, the \emph{Intel Threading Building Blocks} library is a possible alternative; it has high-level support for certain algorithms and data structures.} For ICCP you won't be using supercomputers or systems with multiple nodes.
     Sophisticated libraries like MPI\footnote{Message Passing Interface: a standardized protocol for communications between nodes in a cluster---used on pretty much every supercomputer in the TOP500.} are overkill and introduce needless complexity.
     OpenMP only works on single machines with shared memory, but it is by far the easiest framework to use.
     All you need to do is add \texttt{-fopenmp} to \texttt{FFLAGS} and \texttt{LDFLAGS} in your \texttt{Makefile} and add a few directives to your code.
