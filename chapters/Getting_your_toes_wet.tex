@@ -97,7 +97,7 @@ $ gfortran -Wall -Wextra -march=native -O3 myprog.f90 -o myprog
     This can be a huge time saver; not only for you, but also for your instructors!
     If your program doesn't behave as expected, first try to fix all warnings before asking your instructors for help.
   \item \texttt{-march=native} tells the compiler to generate machine code using all available processor instructions on your machine.
-    On moderns CPUs this leads to much faster code, since \texttt{gfortran} can use vector instructions.
+    On modern CPUs this leads to much faster code, since \texttt{gfortran} can use vector instructions.
     The downside is that it can result in executables that will not run on a different machine.
   \item \texttt{-O3} turns on all optimizations.
     This increases the compilation time significantly, although it should still be fast enough for the programs you'll write in ICCP.
