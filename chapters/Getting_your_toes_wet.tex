@@ -55,7 +55,7 @@ You can probably guess what this program does, however, a few remarks are in ord
     \keyword{implicit none} prevents Fortran from trying to infer the type from the variable name, which is a major source of bugs---\emph{always include this!}
   \item The attribute \keyword{parameter} specifies that we are declaring a constant.
     Although Fortran is case-insensitive, it is considered good practice to always use uppercase names for constant variables.
-  \item Note the calculation of $\pi$ as $4\arctan(1)$---convenient and accurate.
+  \item Note the calculation of $\pi$ as \texttt{4*}\keyword{atan}\texttt{(1d0)}---convenient and accurate.
   \item Single-precision (4 byte) floating-point numbers can be written as \texttt{0.1} or \texttt{1e-1} (scientific notation).
     For double-precision numbers, use \texttt{d} instead of \texttt{e} in scientific notation, \eg, \texttt{1d-1}.
     It is also possible to specify the precision as a suffix: \texttt{1.0\_4} for single and \texttt{1.0\_8} for double precision.
