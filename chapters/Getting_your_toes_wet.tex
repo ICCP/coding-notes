@@ -5,7 +5,7 @@
 \end{quote}
 
 For this course we recommend using the GNU Fortran compiler, as it is free and of reasonably high quality.\footnote{You're welcome to use the Intel Fortran compiler, which is free on Linux, but remember to change the compiler flags, since they differ from \texttt{gfortran}.}
-Linux is the platform of choice, since it's most suited to programming and high-performance computing.\footnote{As of this writing, 476 of the TOP500 supercomputers in the world run some form of Linux.}
+Linux is the platform of choice, since it's most suited to programming and high-performance computing.\footnote{As of this writing, 476 of the \href{http://www.top500.org/list/2013/11/}{TOP500} supercomputers in the world run some form of Linux.}
 OS~X, being a Unix variant, is also an option, but installing the required packages is generally a bit more work.
 In these notes we will assume that you're using Ubuntu.\footnote{You can use Ubuntu as a native installation, run it from a flash drive, under a virtual machine, or under Windows using Wubi.
 Ask your instructor.}
@@ -16,7 +16,7 @@ Open a terminal and at the prompt (the \$) type
   $ sudo aptitude install gfortran gfortran-doc
 \end{lstlisting}
 \emph{Note that anything you type in the console is case-sensitive!}
-This command grants \texttt{aptitude} privilieges to search for and then install the \texttt{gfortran} package and its documentation.
+This command grants \texttt{aptitude} privileges to search for and then install the \texttt{gfortran} package and its documentation.
 You may also find it useful to install the \LaTeX\ typesetting system for writing reports.
 You can install it with another call to \texttt{aptitude}:
 \begin{lstlisting}[style=prompt, nolol]
@@ -25,7 +25,7 @@ You can install it with another call to \texttt{aptitude}:
 
 Once you have \texttt{gfortran} installed, you can start writing programs.
 You will generally compile and run your programs from a terminal window (also called a \emph{console}).
-A few useful commands are:
+A few useful commands include:
 \begin{lstlisting}[style=prompt, nolol]
   $ ls              # display the contents of the current directory
   $ ls -l           # display contents with extra details
@@ -50,7 +50,7 @@ You can probably guess what this program does, however, a few remarks are in ord
 \begin{itemize}
   \item The program starts with a declaration of variables.
     \texttt{\keyword{real}(8)} denotes a floating-point variable with double (8 byte) precision.
-    Similarly, \keyword{integer} denotes an integer number.\footnote{Fortran intrisic types include \keyword{logical}, \keyword{integer}, \keyword{real}, \keyword{complex}, and \keyword{character} data.}
+    Similarly, \keyword{integer} denotes an integer number.\footnote{Fortran intrinsic types include \keyword{logical}, \keyword{integer}, \keyword{real}, \keyword{complex}, and \keyword{character} data.}
     Not specifying a size generally defaults to 4-byte precision.
     \keyword{implicit none} prevents Fortran from trying to infer the type from the variable name, which is a major source of bugs---\emph{always include this!}
   \item The attribute \keyword{parameter} specifies that we are declaring a constant.
@@ -97,7 +97,7 @@ $ gfortran -Wall -Wextra -march=native -O3 myprog.f90 -o myprog
     This can be a huge time saver; not only for you, but also for your instructors!
     If your program doesn't behave as expected, first try to fix all warnings before asking your instructors for help.
   \item \texttt{-march=native} tells the compiler to generate machine code using all available processor instructions on your machine.
-    On moderns CPUs this leads to much faster code, since \texttt{gfortran} can use vector instructions.
+    On modern CPUs this leads to much faster code, since \texttt{gfortran} can use vector instructions.
     The downside is that it can result in executables that will not run on a different machine.
   \item \texttt{-O3} turns on all optimizations.
     This increases the compilation time significantly, although it should still be fast enough for the programs you'll write in ICCP.

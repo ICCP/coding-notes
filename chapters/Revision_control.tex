@@ -7,7 +7,7 @@
 
 A revision control system is perhaps the third most useful tool to a programmer after only the editor and compiler.
 The idea is simple: you give a piece of software a description of recent changes you've made to your code, and that software will efficiently log the changes and description for you to view and optionally undo should you need to.
-Written by Linus Torvalds and popularized by websites like \href{https://Github.com/}{Github}, Git is probablly the most widely used revision system around.
+Written by Linus Torvalds and popularized by websites like \href{https://Github.com/}{Github}, Git is probably the most widely used revision system around.
 While a a full Git tutorial is far beyond the scope of this introduction, knowledge of a few basic commands can potentially save you a ton of time (and headaches!) down the road.
 
 To get started, you'll want to install the \texttt{git}, \texttt{gitk}, and \texttt{git-gui} packages on Ubuntu. Next, let's assume you've created an \texttt{iccp/} directory with one file, \texttt{myProg.f90}, that already has some content. Navigate to the \texttt{iccp/} directory and type
@@ -40,7 +40,7 @@ And to delete any changes you've made
 \begin{verbatim}
 $ git checkout <file>
 \end{verbatim}
-You can view the entire project history with the \texttt{gitk} program, including file diffs, commit messages, and authors. Similarly, \texttt{git gui} provides a handy interface for staging commits. You can write/ammend commit messages, see which files have changed and what files you've added to the index, push/pull to remote repositories, etc.
+You can view the entire project history with the \texttt{gitk} program, including file diffs, commit messages, and authors. Similarly, \texttt{git gui} provides a handy interface for staging commits. You can write/amend commit messages, see which files have changed and what files you've added to the index, push/pull to remote repositories, etc.
 
 There are only a handful of ways to completely delete data from the repository once you've committed it\footnote{It's a good idea to avoid the more dangerous commands like \texttt{git rebase} and \texttt{git gc}. \textcolor{red}{\emph{Always}} think about commands before you run them!}, so unless you're \emph{really} trying to rewrite history your code is reasonably safe from git-mishaps.
 That said, here are some tried and true tips to make the most of Git:
