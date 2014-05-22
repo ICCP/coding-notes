@@ -12,7 +12,7 @@ $ man plline
 on the command line.
 
 In order to successfully compile a program using PLplot, you need quite a few compiler flags and libraries.
-However, Ubuntu (and most other distributions) is smart enough to figure that out for you.
+However, most Linux distributions are smart enough to figure that out for you.
 Add the following two lines near the top of your \texttt{Makefile}, but after the declarations of \texttt{FFLAGS} and \texttt{LIBS}:
 \begin{verbatim}
 FFLAGS += $(shell pkg-config --cflags plplotd-f95)
