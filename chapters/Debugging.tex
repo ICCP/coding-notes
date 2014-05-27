@@ -11,10 +11,10 @@ However, any non-trivial program will be buggy after your first attempt at writi
 \emph{In this course you will spend the majority of your time debugging your algorithms and your code, not on the actual writing!} To ease your pain, we recommend following the golden rules of debugging:
 \begin{itemize}
   \item\textbf{Always fix the first error first.} Errors have a tendency to cascade, with a simple typo early on generating loads of errors in the rest of your program.
-    If you find yourself with a ton of unmanageable issues, use the \texttt{-Wfatal-errors} flag to halt compilation after the first error so you can fix them individually.
+    If you find yourself with a ton of unmanageable issues, use the \texttt{-Wfatal-errors} flag\index{compiler flags!-Wfatal-errors} to halt compilation after the first error so you can fix them individually.
   \item\textbf{Don't ignore warnings.} Warnings are often an indication that your code doesn't actually do what you think it does.
     And if it does happen to work, it's an indication of bad programming practice, or worse, style.
-    You can use the \texttt{-Werror} flag to elevate warnings into errors, forcing you to fix them before the compiler will produce an executable.
+    You can use the \texttt{-Werror} flag\index{compiler flags!-Werror} to elevate warnings into errors, forcing you to fix them before the compiler will produce an executable.
   \item\textbf{Test early, test often.} No matter how large the project, always start with a trivial program and make sure that works.
     Then add functionality bit by bit, each time making sure it compiles and works.
   \item\textbf{Produce lots of output.} You might think that there can't possibly be a bug in that beautiful expression, but you're wrong.
@@ -30,7 +30,7 @@ Even if you do follow these rules---\emph{and you should!}---you will run into b
 Often they can be fixed by backtracking and checking every intermediate step, but bugs can be elusive.
 In those cases a debugger comes in handy.
 To use a debugger under Ubuntu, install the \texttt{gdb} and \texttt{ddd} packages.
-You'll also need to compile your program with the \texttt{-g} flag to generate debug symbols, and turn off any optimizations as they might reorder expressions in your code, \eg,
+You'll also need to compile your program with the \texttt{-g} flag\index{compiler flags!-g} to generate debug symbols, and turn off any optimizations as they might reorder expressions in your code, \eg,
 \begin{verbatim}
 $ gfortran -Wall -Wextra -march=native -g myprog.f90 -o myprog
 \end{verbatim}

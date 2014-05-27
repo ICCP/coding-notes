@@ -9,6 +9,7 @@
 \usepackage{graphicx}
 \usepackage{epstopdf}
 \usepackage{listings}
+\usepackage{makeidx}
 \usepackage{microtype}
 \usepackage{nag}
 \usepackage{titlepic}
@@ -68,6 +69,8 @@
 
 \renewenvironment{quote}{\list{}{\leftmargin=8\parindent}\item\relax}{\endlist}
 
+\makeindex
+
 %\widowpenalty=3000
 %\clubpenalty=3000
 
@@ -123,5 +126,7 @@ To view a copy of this license, visit \url{http://creativecommons.org/licenses/b
   \item \href{https://www.gnu.org/fun/jokes/ed-msg.html}{\texttt{Ed, man! !man ed}}
   \item \href{http://blog.sanctum.geek.nz/vim-koans/}{Vim koans}
 \end{itemize}
+
+\printindex
 
 \end{document}

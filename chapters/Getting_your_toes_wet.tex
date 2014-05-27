@@ -63,7 +63,7 @@ You can probably guess what this program does, however, a few remarks are in ord
   \item \texttt{\keyword{integer} :: fibonacci(N)} allocates an array of 20
     integers, with the array index\footnote{Array indices can start at any integer by replacing \texttt{N} with a lower and upper bound separated with a colon.} running from 1 to 20.
   \item `\texttt{*}' is multiplication, `\texttt{**}' is exponentiation.
-  \item The \keyword{print} statement on line 24 contains the formatting string \str{"(4I6)"}.
+  \item The \keyword{print} statement on line 24 contains the format code\index{format codes} \str{"(4I6)"}.
     This tells Fortran to print 4 records of integer type per line, each taking up 6 characters.
     Format strings for other datatypes include E$w.d$ (real -- decimal form), ES$w.d$ (real -- scientific form), EN$w.d$ (real -- engineering form), L$w$ (logical), and A (characters). Here, $w$ gives the width of a record and $d$ gives the number of places right of the decimal.
   \item Comments in Fortran start with `\texttt{!}' and last until the end of the line.
@@ -92,22 +92,22 @@ We recommend using always at least the following:
 $ gfortran -Wall -Wextra -march=native -O3 myprog.f90 -o myprog
 \end{verbatim}
 \begin{itemize}
-  \item \texttt{-Wall} and \texttt{-Wextra} turn on all warnings.
+  \item \texttt{-Wall}\index{compiler flags!-Wall} and \texttt{-Wextra}\index{compiler flags!-Wextra} turn on all warnings.
     This may generate a lot of messages, but fixing them all leads to much cleaner code.
     This can be a huge time saver; not only for you, but also for your instructors!
     If your program doesn't behave as expected, first try to fix all warnings before asking your instructors for help.
-  \item \texttt{-march=native} tells the compiler to generate machine code using all available processor instructions on your machine.
+  \item \texttt{-march=native}\index{compiler flags!-march=native} tells the compiler to generate machine code using all available processor instructions on your machine. 
     On modern CPUs this leads to much faster code, since \texttt{gfortran} can use vector instructions.
     The downside is that it can result in executables that will not run on a different machine.
-  \item \texttt{-O3} turns on all optimizations.
+  \item \texttt{-O3}\index{compiler flags!-O3} turns on all optimizations.
     This increases the compilation time significantly, although it should still be fast enough for the programs you'll write in ICCP.
     The runtime of your program, on the other hand, will dramatically decrease.
     The only reason not to use this flag is that it might interfere with the debugger (see below).
-  \item A possible additional optimization flag is \texttt{-ffast-math}.
+  \item A possible additional optimization flag is \texttt{-ffast-math}\index{compiler flags!-ffast-math}.
     This flag enables floating-point optimizations which might reduce accuracy or result in incorrect behavior, especially in situations such as divide-by-zero.
     We therefore recommend not using this flag until you have verified that your program produces the correct results.
     After that you can use it to make your program faster, but do check that it still behaves correctly.
-  \item Finally, if your code starts throwing segmentation faults (segfaults), consider using the \texttt{-fbounds-check} flag.
+  \item Finally, if your code starts throwing segmentation faults (segfaults), consider using the \texttt{-fbounds-check}\index{compiler flags!-fbounds-check} flag.
     Segfaults usually occur because you've run an index off the end of an array, so compiling with this flag turns on runtime bounds checking (at the expense of significantly reduced performance).
 \end{itemize}
 If the program compiled correctly, you can run it by typing \texttt{./a.out} or \texttt{./myprog}.
