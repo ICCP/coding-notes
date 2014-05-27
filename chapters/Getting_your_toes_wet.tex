@@ -48,12 +48,12 @@ For your first program, open a terminal, create a directory for ICCP files and o
 The gedit text editor pops open in which you can type the program in \autoref{lst:myProg}.
 You can probably guess what this program does, however, a few remarks are in order:
 \begin{itemize}
-  \item The program starts with a declaration of variables.
+  \item The program starts with a declaration of variables.\index{Fortran!types}
     \texttt{\keyword{real}(8)} denotes a floating-point variable with double (8 byte) precision.
     Similarly, \keyword{integer} denotes an integer number.\footnote{Fortran intrinsic types include \keyword{logical}, \keyword{integer}, \keyword{real}, \keyword{complex}, and \keyword{character} data.}
     Not specifying a size generally defaults to 4-byte precision.
-    \keyword{implicit none} prevents Fortran from trying to infer the type from the variable name, which is a major source of bugs---\emph{always include this!}
-  \item The attribute \keyword{parameter} specifies that we are declaring a constant.
+    \keyword{implicit none}\index{Fortran!implicit none@\keyword{implicit none}} prevents Fortran from trying to infer the type from the variable name, which is a major source of bugs---\emph{always include this!}
+  \item The attribute \keyword{parameter}\index{Fortran!parameter@\keyword{parameter}} specifies that we are declaring a constant.
     Although Fortran is case-insensitive, it is considered good practice to always use uppercase names for constant variables.
   \item Note the calculation of $\pi$ as \texttt{4*\keyword{atan}(1d0)}---convenient and accurate.
   \item Single-precision (4 byte) floating-point numbers can be written as \texttt{0.1} or \texttt{1e-1} (scientific notation).
@@ -61,13 +61,13 @@ You can probably guess what this program does, however, a few remarks are in ord
     It is also possible to specify the precision as a suffix: \texttt{1.0\_4} for single and \texttt{1.0\_8} for double precision.
     This also works for integers.
   \item \texttt{\keyword{integer} :: fibonacci(N)} allocates an array of 20
-    integers, with the array index\footnote{Array indices can start at any integer by replacing \texttt{N} with a lower and upper bound separated with a colon.} running from 1 to 20.
+    integers, with the array\index{Fortran!arrays} index\footnote{Array indices can start at any integer by replacing \texttt{N} with a lower and upper bound separated with a colon.} running from 1 to 20.
   \item `\texttt{*}' is multiplication, `\texttt{**}' is exponentiation.
-  \item The \keyword{print} statement on line 24 contains the format code\index{format codes} \str{"(4I6)"}.
+  \item The \keyword{print} statement on line 24 contains the format code\index{Fortran!format codes} \str{"(4I6)"}.
     This tells Fortran to print 4 records of integer type per line, each taking up 6 characters.
     Format strings for other datatypes include E$w.d$ (real -- decimal form), ES$w.d$ (real -- scientific form), EN$w.d$ (real -- engineering form), L$w$ (logical), and A (characters). Here, $w$ gives the width of a record and $d$ gives the number of places right of the decimal.
   \item Comments in Fortran start with `\texttt{!}' and last until the end of the line.
-  \item Dividing integers \textcolor{red}{\textbf{results in an integer}}, so \texttt{3 / 2 == 1} instead of 1.5 as you might expect.
+  \item Dividing integers \textcolor{red}{\textbf{results in an integer}}\index{Fortran!integer division}, so \texttt{3 / 2 == 1} instead of 1.5 as you might expect.
     Multiplying by \texttt{1d0} on line 27 forces Fortran to do a double-precision floating-point calculation.
 \end{itemize}
 Now we compile and run the program.

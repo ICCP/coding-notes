@@ -22,7 +22,7 @@ So, what does a \texttt{Makefile} look like? As an example, let's go through \au
     The \texttt{COMPILE} and \texttt{LINK} variables combine these to get the compile and link commands.
   \item Most non-trivial programs make use of several function libraries, such as the Linear Algebra PACKage (LAPACK).
     These libraries are stored under \texttt{/usr/lib} and have filenames such as \texttt{liblapack.a} or \texttt{liblapack.so}.
-    You can link such a library with your program by specifying the \texttt{-llapack} argument to the linker.
+    You can link such a library with your program by specifying the \texttt{-llapack}\index{LAPACK!linking} argument to the linker.
     Note that you have to omit both \texttt{lib} and the extension (\texttt{.a} or \texttt{.so}) from the library name.
     Since libraries have to appear after the object files for the linker, they are specified in the separate variable \texttt{LIBS}.
     If the library cannot be found in the system paths, you can tell the compiler to search for it in the directory \texttt{\emph{PATH}} by adding the option \texttt{-L\emph{PATH}} to \texttt{LDFLAGS}, \eg, \texttt{LDFLAGS = -L\$HOME/mylib}.

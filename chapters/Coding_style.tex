@@ -35,7 +35,7 @@ Remember: you will be spending a lot more time reading your code than writing it
     Use \texttt{CamelCase} to separate words in program and module names, and \texttt{lower\_case\_with\_underscores} for function and variable names.
     Names should be descriptive, but they don't have to be overly long.
     You can use \texttt{calc\_deriv} instead of \texttt{calculate\_derivative}, but naming your function \texttt{cd} is a shooting offense.
-    Unfortunately, until the appearance of Fortran 90, only the first six characters of an identifier were significant, leading to such beautifully transparent function names as \texttt{DSYTRF}\footnote{DSYTRF computes the factorization of a real symmetric matrix using the Bunch-Kaufman diagonal pivoting method, in case you wondered.} in legacy codes like LAPACK.
+    Unfortunately, until the appearance of Fortran 90, only the first six characters of an identifier were significant, leading to such beautifully transparent function names as \texttt{DSYTRF}\footnote{DSYTRF computes the factorization of a real symmetric matrix using the Bunch-Kaufman diagonal pivoting method, in case you wondered.} in legacy codes like \idx{LAPACK}.
     They could get away with it because it was the eighties; you can't.
     One exception to this rule is using short identifiers like \texttt{i}, \texttt{j} and \texttt{k} as loop counters, or \texttt{x} and \texttt{y} as arguments to mathematical functions.
     However, these should always be local variables or function arguments, never global identifiers.
@@ -55,7 +55,7 @@ Remember: you will be spending a lot more time reading your code than writing it
     The how should be evident from the code itself.
     \emph{``Good code is its own best documentation.''} If you follow the other guidelines regarding naming and keeping functions small, you can generally suffice with a small comment at the beginning of every function or subroutine.
 \end{itemize}
-One final point, not of style, but important nonetheless: start every program and module with \keyword{implicit none}.
+One final point, not of style, but important nonetheless: start every program and module with \keyword{implicit none}\index{Fortran!implicit none@\keyword{implicit none}}.
 This is an unfortunate holdover from older versions of Fortran; it forces you to explicitly declare all variables, instead of allowing Fortran to infer the type from the name.
 Forgetting \keyword{implicit none} and making a typo in one of your variable names is a major source of bugs.
 \emph{Never ever omit this!}

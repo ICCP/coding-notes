@@ -31,7 +31,7 @@ We can do this in Fortran, with the subroutine seen in \autoref{lst:SumsBeforeGa
 Fortran subroutines are invoked with the keyword \keyword{call} followed by the name of the routine and an optional list of parameters in parentheses.
 The code for the subroutine itself appears after the keyword \keyword{contains}.
 We don't have to type \keyword{implicit none} again, since that's inherited from the program.
-When declaring the parameters, we need to specify not only the type, but also how we're going to use them, \ie, the \emph{intent}.
+When declaring the parameters, we need to specify not only the type, but also how we're going to use them, \ie, the \emph{intent}.\index{Fortran!intent(in/out)@\keyword{intent (in}/\keyword{out)}}
 For input and output parameters, we use \texttt{\keyword{intent}(\keyword{in})} and \texttt{\keyword{intent}(\keyword{out})}, respectively.
 For parameters functioning as both, we use \texttt{\keyword{intent}(\keyword{inout})}.
 
