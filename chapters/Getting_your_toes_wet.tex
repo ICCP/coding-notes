@@ -64,8 +64,8 @@ You can probably guess what this program does, however, a few remarks are in ord
     integers, with the array\index{Fortran!arrays} index\footnote{Array indices can start at any integer by replacing \texttt{N} with a lower and upper bound separated with a colon. That is, declaring \texttt{myArray(-312:74)} means \texttt{myArray} starts at index -312 and runs through index 74.} running from 1 to 20.
   \item `\texttt{*}' is multiplication, `\texttt{**}' is exponentiation.
   \item The \keyword{print} statement on line 24 contains the format code\index{Fortran!format codes} \str{"(4I6)"}.
-    This tells Fortran to print 4 records of integer type per line, each taking up 6 characters.
-    Format strings for other datatypes include E$w.d$ (real -- decimal form), ES$w.d$ (real -- scientific form), EN$w.d$ (real -- engineering form), L$w$ (logical), and A (characters). Here, $w$ gives the width of a record and $d$ gives the number of places right of the decimal.
+    This tells Fortran to print 4 records of integer type, each having a width of 6 characters (including spaces), per line. 
+    Format strings for other datatypes include \texttt{Ew.d} (real -- decimal form), \texttt{ESw.d} (real -- scientific form), \texttt{ENw.d} (real -- engineering form), \texttt{Lw} (logical), and \texttt{A} (characters). Here, \texttt{w} gives the width of a record and \texttt{d} gives the number of places right of the decimal.
   \item Comments in Fortran start with `\texttt{!}' and last until the end of the line.
   \item Dividing integers \textcolor{red}{\textbf{results in an integer}}\index{Fortran!integer division}\footnote{Unexpected integer divison is a tricky problem to fix and one of the most common bugs in ICCP.}, so \texttt{3 / 2 == 1} instead of 1.5 as you might expect.
     Multiplying by \texttt{1d0} on line 27 forces Fortran to do a double-precision floating-point calculation.

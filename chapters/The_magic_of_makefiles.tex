@@ -42,7 +42,7 @@ So, what does a \texttt{Makefile} look like? As an example, let's go through \au
     The \texttt{-c} option tell the compiler to only perform the compilation step to create an object file, and to skip linking.
     Note that the object files are compiled in the order specified in \texttt{\$(OBJS)}.
     This means that if the program file \texttt{myprog} depends on the module \texttt{mymod}, \texttt{mymod.o} needs to be listed before \texttt{myprog.o}.
-  \item The special target \texttt{clean} is used to delete all compiler-generated files.
+  \item The special target \texttt{clean}\marginnote{\texttt{clean} has also been designated as \texttt{PHONY}. The \texttt{make} program will never check to see if a phony target actually exists, it will always just execute the rule.} is used to delete all compiler-generated files.
     This includes the executable \texttt{myprog}, the object files listed in \texttt{\$(OBJS)} and any automatically generated module files (with extension \texttt{.mod}).
 \end{itemize}
 In the rest of these notes we will assume that you have created a \texttt{Makefile} for each project based on this template.
