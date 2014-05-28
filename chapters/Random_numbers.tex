@@ -15,4 +15,4 @@ The subroutine in \autoref{lst:init_random_seed} will seed the RNG with entropy 
 \lstinputlisting[float=htbp,label=lst:init_random_seed]{examples/init_random_seed.f90}
 
 The Fortran random number generator produces uniformly distributed reals on the interval\footnote{Be careful with operations that might fail with \texttt{0.0d0}.} $\left[0, 1\right)$, but simulations often require numbers drawn from a different distribution. 
-For this, we again turn you to \emph{Numerical Recipes}; it describes several methods for generating nonuniform random variates including rejection sampling for gamma, poisson, and binomial distributions and the Box-Muller transform for normal distributions. 
+For this, we again turn you to \emph{Numerical Recipes}; it describes several methods for generating nonuniform random variates including rejection sampling for gamma, poisson, and binomial distributions as well as the Box-Muller transform for normal distributions. 
