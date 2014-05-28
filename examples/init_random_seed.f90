@@ -6,8 +6,9 @@ subroutine init_random_seed()
 
   call random_seed(size = n)
   allocate(seed(n))
-  open(newunit=un, file="/dev/urandom", access="stream", &
-       form="unformatted", action="read", status="old", iostat=istat)
+  open(newunit=un, file="/dev/urandom", access="stream",&
+       form="unformatted", action="read", status="old", &
+       iostat=istat)
   if (istat == 0) then
      read(un) seed
      close(un)
@@ -17,7 +18,7 @@ subroutine init_random_seed()
         t = transfer(count, t)
      else
         call date_and_time(values=dt)
-        tms = (dt(1) - 1970) * 365_8 * 24 * 60 * 60 * 1000 &
+        tms = (dt(1) - 1970)*365_8 * 24 * 60 * 60 * 1000 &
              + dt(2) * 31_8 * 24 * 60 * 60 * 1000 &
              + dt(3) * 24 * 60 * 60 * 60 * 1000 &
              + dt(5) * 60 * 60 * 1000 &

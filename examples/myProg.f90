@@ -22,8 +22,9 @@ program MyProg
     end do
     print *, "Fibonacci sequence:"
     print "(4I6)", fibonacci
-    ! The ratio of neighboring Fibonacci numbers converges to the
-    ! golden ratio.
-    print *, "Golden ratio:", 1d0 * fibonacci(N) / fibonacci(N - 1)
+    ! The ratio of neighboring Fibonacci numbers
+    ! converges to the golden ratio.
+    print *, "Golden ratio:", &
+             1d0*fibonacci(N)/fibonacci(N - 1)
 
 end program

@@ -51,6 +51,13 @@ That said, here are some tried and true tips to make the most of Git:
     This greatly helps in reasoning about the development of your code---and thus undoing problems!
   \item \textbf{Use descriptive commit messages}. Messages like ``Fixed bug in force calculation'' and ``Implemented averaging function'' work far better than an endless series of ``nightly backup''s.
     If you can't easily reason about what's changed in your code, tracking the changes will do very little to help you.
+\begin{marginfigure}[-1.1cm]
+  \centering
+  \label{fig:git_commit}
+  \includegraphics[width=\textwidth]{figures/git_commit.png}
+
+  \hspace*{\fill}---Randall Munroe (\href{https://xkcd.com/1296/}{XKCD})
+\end{marginfigure}
   \item \textbf{Commit the bare minimum}. Only commit what's needed to recompile a functional program.
     Git just tracks the differences in files between commits to save space, but executables, output data, PDFs, images, etc. all require a totally new copy in the history every time they change (and that's frequently!)
     Tracking a \texttt{.gitignore} file with some simple patterns can automatically ignore files of a similar type.
@@ -71,9 +78,3 @@ And for the truly enthusiastic, \href{http://pcottle.github.io/learnGitBranching
 
 \vfill
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.4\textwidth]{figures/git_commit.png}
-
-  \hspace*{\fill}---Randall Munroe (\href{https://xkcd.com/1296/}{XKCD})
-\end{figure}

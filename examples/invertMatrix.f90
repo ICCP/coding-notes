@@ -1,14 +1,16 @@
 ! Calculates the inverse of a real symmetric matrix.
 !
-! a - On input, a real symmetric matrix. Only the upper triangular part is
-!     accessed. On output, A is overwritten by its inverse.
+! a - On input, a real symmetric matrix. Only the upper
+!     triangular part is accessed. On output, A is 
+!     overwritten by its inverse.
 subroutine matinvrs(a)
 
     real(8), intent(inout) :: a(:, :)
 
     integer, external :: ilaenv
 
-    integer              :: i, j, n, nb, lwork, info, ipiv(size(a, 1))
+    integer              :: i, j, n, nb, lwork, info
+    integer              :: ipiv(size(a, 1))
     real(8), allocatable :: work(:)
 
     n = size(a, 1)

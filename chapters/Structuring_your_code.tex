@@ -21,7 +21,7 @@ As a (silly) example, let's say you need to sum all integers in a certain interv
 Programmers are lazy, so we're going to write a program to do that for us.
 Gauss, of course, found a way to do this very quickly, but for the sake of the example, let's pretend we don't know about it and use \autoref{lst:SumsBeforeGauss} instead.
 \lstinputlisting[float=htbp,label=lst:SumsBeforeGauss]{examples/SumsBeforeGauss.f90}
-Note that we can't use the word \texttt{sum} as a variable name, since that's a Fortran intrinsic, so we use \texttt{total} instead.
+Note that we can't use the word \texttt{sum} as a variable name, since that's a Fortran intrinsic\footnote{Fortran \emph{occasionally} uses reserved keywords in multiple ways, such as \keyword{dim} (the two-argument function) and \texttt{dim} (an argument to several array-based subroutines), though the meaning is usually clear.}, so we use \texttt{total} instead.
 This program is simple, clean, and doesn't need comments to show what it does.
 However, we can do better.
 Summing numbers in an interval is a generic mathematical operation, which we might need to do more often.
