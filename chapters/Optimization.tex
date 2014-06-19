@@ -79,7 +79,7 @@ Guess which is both faster\marginnote{It's easy to forget that array operations 
         i & j & k & l
     \end{bmatrix}
     \end{equation*}
-    is actually stored in memory as $\left[a,e,i,b,f,j,c,g,k,d,h,l\right]$\footnote{Notice, column-major ordering means the leftmost index moves the fastest as one traverses consecutive memory entries. Predictably, row-major ordering means the same for the rightmost index.}.
+    is actually stored in memory\footnote{Notice, column-major ordering means the leftmost index moves the fastest as one traverses consecutive memory entries. Predictably, row-major ordering means the same for the rightmost index.} as $\left[a,e,i,b,f,j,c,g,k,d,h,l\right]$.
     Because of this, operations within a single column are much faster than operations within a single row; the processor can easily load a whole column into the cache, but not a whole row.
     It is therefore important to carefully consider your array layout.
     For example, if you have an array containing the coordinates of many particles, then a $3\times n$ layout will be more efficient than $n\times 3$.

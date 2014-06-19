@@ -60,12 +60,12 @@ or by specifying no arguments at all.
 For some programs, such as a molecular dynamics simulation, it is convenient to be able to watch the motion of particles in real time.
 For this we'll make use of the 3D plotting facilities of PLplot.
 First, we setup the viewport with
-\lstinputlisting[lastline=10]{examples/PLplot3D.f90} % Note, these 3 listings all draw from the same source file. Any changes there require a MANUAL reindexing of the firstline and lastline values!
+\lstinputlisting[lastline=11]{examples/PLplot3D.f90} % Note, these 3 listings all draw from the same source file. Any changes there require a MANUAL reindexing of the firstline and lastline values!
 Since the animation will play real-time, we specify the Cairo X Windows driver directly with \texttt{plsdev} instead of parsing the command line.
-Lines 5--7 map the world coordinates---bounded by \texttt{xmin}, \texttt{xmax}, \emph{etc.}---to the screen.
+Lines 7--11 map the world coordinates---bounded by \texttt{xmin}, \texttt{xmax}, \emph{etc.}---to the screen.
 This will result in a box which is rotated by 45 degrees around the $z$ and $x$ axes.
 We end the program with
-\lstinputlisting[firstline=11, lastline=12, firstnumber=11, caption=, nolol]{examples/PLplot3D.f90}
+\lstinputlisting[firstline=12, lastline=13, firstnumber=12, caption=, nolol]{examples/PLplot3D.f90}
 The call to \texttt{plspause} makes sure the program terminates after the animation finishes, instead of leaving the last frame on screen indefinitely.
 
 We plot particles by calling the following subroutine:

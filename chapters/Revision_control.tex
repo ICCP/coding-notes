@@ -42,7 +42,7 @@ $ git checkout <file>
 \end{verbatim}
 You can view the entire project history with the \texttt{gitk} program, including file diffs, commit messages, and authors. Similarly, \texttt{git gui} provides a handy interface for staging commits. You can write/amend commit messages, see which files have changed and what files you've added to the index, push/pull to remote repositories, etc.
 
-There are only a handful of ways to completely delete data from the repository once you've committed it\footnote{It's a good idea to avoid the more dangerous commands like \texttt{git rebase} and \texttt{git gc}. \textcolor{red}{\emph{Always}} think about commands before you run them!}, so unless you're \emph{really} trying to rewrite history your code is reasonably safe from git-mishaps.
+There are only a handful of ways to completely delete data from the repository once you've committed it\marginnote{It's a good idea to avoid the more dangerous commands like \texttt{git rebase} and \texttt{git gc} that \emph{can} permanently remove things from the project history. \textcolor{red}{\emph{Always}} think about commands before you run them!}, so unless you're \emph{really} trying to rewrite history your code is reasonably safe from git-mishaps.
 That said, here are some tried and true tips to make the most of Git:
 \begin{itemize}
   \item \textbf{Commit frequently}. The more commits you have, the more the history can help you.

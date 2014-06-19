@@ -24,7 +24,7 @@ Remember: you will be spending a lot more time reading your code than writing it
     If the indentation puts you over the 80 character limit, that's an indication that you may need to refactor your code intro smaller subroutines.
     Four levels of indentation should generally be the maximum.
   \item\textbf{Spaces}---Put spaces around binary operators, including \texttt{::}, and after keywords and commas, not after unary operators, function names or around parentheses. For example
-\begin{lstlisting}[caption=,nolol,float=t!]
+\begin{lstlisting}[caption=,nolol,float=h!]
   real(8) :: x, y
   x = func1()
   if ((x < 0) .or. (x > 1)) then
@@ -45,7 +45,7 @@ Remember: you will be spending a lot more time reading your code than writing it
     If a function does not fit in its entirety on a single screen, it is too long---split it up.
     Don't worry about the overhead of calling a function.
     If you use optimization flags like \texttt{-O3}, the compiler will try to inline them anyway.
-  \item\textbf{Modules}---\marginnote{It's also a good idea to put all physical parameters (number of particles, $\pi$, $c$, $k_B$, etc.) into their own module, even if they're just constant numbers. You can then ``load'' the parameters into your subroutines with the \keyword{use} statement instead of having absurdly long lists of arguments, or worse, \emph{global variables}.}Separate your program into logical units.
+  \item\textbf{Modules}---\marginnote{It's also a good idea to put all physical parameters (number of particles, $\pi$, $c$, $k_B$, etc.) into their own module, even if they're just constant numbers. You can then ``load'' the parameters into your subroutines with the \keyword{use} statement instead of having absurdly long lists of arguments, or worse, global variables.}Separate your program into logical units.
     Combine related functions and subroutines into modules.
     For example, a single module with function integrators, or ODE solvers. 
     If you use the object-oriented features of Fortran, it is also good practice to create separate modules for classes, \eg, a sparse-matrix object.
@@ -55,7 +55,7 @@ Remember: you will be spending a lot more time reading your code than writing it
     The how should be evident from the code itself.
     \emph{``Good code is its own best documentation.''} If you follow the other guidelines regarding naming and keeping functions small, you can generally suffice with a small comment at the beginning of every function or subroutine.
 \end{itemize}
-One final point, not of style, but important nonetheless: start every program and module with \keyword{implicit none}\index{Fortran!implicit none@\keyword{implicit none}}.
+One final point, not of style, but important nonetheless: start every program and module with \keyword{implicit none}\marginnote{The \texttt{-fimplicit-none}\index{compiler flags!-fimplicit-none} compiler flag will also turn off implicit typing globally.}  \index{Fortran!implicit none@\keyword{implicit none}}.
 This is an unfortunate holdover from older versions of Fortran; it forces you to explicitly declare all variables, instead of allowing Fortran to infer the type from the name.
 Forgetting \keyword{implicit none} and making a typo in one of your variable names is a major source of bugs.
 \emph{Never ever omit this!}

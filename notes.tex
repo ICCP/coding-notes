@@ -5,14 +5,17 @@
 \usepackage{cag}
 \usepackage{fancyhdr}
 \usepackage{float}
-\usepackage{geometry}
+%\usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{epstopdf}
 \usepackage{listings}
 \usepackage{makeidx}
 \usepackage{microtype}
 \usepackage{nag}
+%\usepackage{thumbs}
 \usepackage{titlepic}
+\usepackage{tikz}
+\usepackage{pgfplots}
 %\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 
 %\usepackage{arevmath}
@@ -27,7 +30,6 @@
 
 %\definecolor{TUBlue}{RGB}{61,152,222}
 %\definecolor{SpartanGreen}{RGB}{24,69,59}
-
 
 \hypersetup{
     colorlinks=true,
@@ -91,14 +93,18 @@
 %\frontmatter
 \maketitle
 
-%\newpage
-%\null
-%\vfill
-%\begin{center}
-  %\includegraphics[width=0.15\textwidth]{figures/by-nc-sa.eps}
-%\end{center}
-%This work, including its figures and \LaTeX\ source code, is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
-%To view a copy of this license, visit \url{http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en_US}.
+\pagestyle{empty}
+
+\newpage
+\null
+\vfill
+\begin{center}
+  \includegraphics[width=0.15\textwidth]{figures/by-nc-sa.eps}
+\end{center}
+This work, including its figures and \LaTeX\ source code, is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
+To view a copy of this license, visit \url{http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en_US}.
+
+\pagestyle{fancy}
 
 \tableofcontents
 %\lstlistoflistings
