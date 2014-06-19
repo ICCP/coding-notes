@@ -40,7 +40,7 @@ A few useful commands include:
 \end{lstlisting}
 
 For your first program, open a terminal, create a directory for ICCP files and open your first Fortran file by typing
-\marginnote{Modern terminal emulators all have a feature called \emph{tab completion}; enter part of a command \& hit the \texttt{TAB} key and the terminal will attempt to fill in the rest of the command for you.}
+\marginnote[-0.5cm]{Modern terminal emulators all have a feature called \emph{tab completion}; enter part of a command \& hit the \texttt{TAB} key and the terminal will attempt to fill in the rest of the command for you.}
 \begin{lstlisting}[style=prompt, nolol]
   $ mkdir iccp          # create a new directory called 'iccp'
   $ cd iccp             # move to the new directory
@@ -68,7 +68,7 @@ You can probably guess what this program does, however, a few remarks are in ord
     This tells Fortran to print 4 records of integer type, each having a width of 6 characters (including spaces), per line. 
     Format strings for other datatypes include \texttt{Ew.d} (real -- decimal form), \texttt{ESw.d} (real -- scientific form), \texttt{ENw.d} (real -- engineering form), \texttt{Lw} (logical), and \texttt{A} (characters). Here, \texttt{w} gives the width of a record and \texttt{d} gives the number of places right of the decimal.
   \item Comments in Fortran start with `\texttt{!}' and last until the end of the line.
-  \item Dividing integers \textcolor{red}{\textbf{results in an integer}}\index{Fortran!integer division}\footnote{Unexpected integer divison is a tricky problem to find and one of the most common bugs in ICCP.}, so \texttt{3 / 2 == 1} instead of 1.5 as you might expect.
+  \item Dividing integers \textcolor{red}{\textbf{results in an integer}}\index{Fortran!integer division}, so \texttt{3 / 2 == 1} instead of 1.5 as you might expect.
     Multiplying by \texttt{1d0} on line 27 forces Fortran to do a double-precision floating-point calculation.
 \end{itemize}
 Now we compile and run the program.

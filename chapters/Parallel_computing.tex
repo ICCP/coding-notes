@@ -36,7 +36,7 @@ Some algorithms simply don't scale to multiple processors.
     }
     \end{axis}
   \end{tikzpicture}
-  \caption{Amdahl's law details the theoretical speedup of a fixed-size algorithm given the fraction of the algorithm that can execute in parallel $(f_p)$ and the number of processors available for computation.}
+  \caption{\index{Amdahl's Law}Amdahl's law details the theoretical speedup of a fixed-size algorithm given the fraction of the algorithm that can execute in parallel and the number of processors available for computation.}
 \end{marginfigure}
 Despite its complexity, parallel programming is unavoidable in high-performance computing.
 While a true introduction is outside the scope of these notes, we'll give a few guidelines that might help you from accidentally shooting yourself in the foot:
@@ -45,7 +45,7 @@ While a true introduction is outside the scope of these notes, we'll give a few 
     Programs are much harder to debug when they run in parallel, so leave parallelization for the final step.
   \item\textbf{Check whether the bottleneck in your program benefits from parallelization.} Not every algorithm scales well.
     It would be a waste of time to spend effort parallelizing your code only to discover that it's now actually slower.
-  \item\textbf{Use OpenMP.}\footnote{OpenMP is available for C, \Cplusplus{} and Fortran.
+  \item\textbf{Use OpenMP.}\footnote{OpenMP is available for C, \Cplusplus, and Fortran.
     If you are using \Cplusplus, the \emph{Intel Threading Building Blocks} library is a possible alternative; it has high-level support for certain algorithms and data structures.} For ICCP you won't be using supercomputers or systems with multiple nodes.
     Sophisticated libraries like MPI\footnote{Message Passing Interface: a standardized protocol for communications between nodes in a cluster---used on pretty much every supercomputer in the TOP500.} are overkill and introduce needless complexity.
     OpenMP only works on single machines with shared memory, but it is by far the easiest framework to use.
