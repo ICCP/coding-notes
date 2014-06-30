@@ -45,8 +45,8 @@ Remember: you will be spending a lot more time reading your code than writing it
     If a function does not fit in its entirety on a single screen, it is too long---split it up.
     Don't worry about the overhead of calling a function.
     If you use optimization flags like \texttt{-O3}, the compiler will try to inline them anyway.
-  \item\textbf{Modules}---\marginnote{It's also a good idea to put all physical parameters (number of particles, $\pi$, $c$, $k_B$, etc.) into their own module, even if they're just constant numbers. You can then ``load'' the parameters into your subroutines with the \keyword{use} statement instead of having absurdly long lists of arguments, or worse, global variables.}Separate your program into logical units.
-    Combine related functions and subroutines into modules.
+  \item\textbf{Modules}---Separate your program into logical units.
+    Combine related functions and subroutines into modules\footnote{It's also convenient to put all physical parameters (number of particles, $\pi$, $c$, $k_B$, etc.) into their own module, even if they're just constant numbers. You can then ``load'' the parameters into your subroutines with the \keyword{use} statement instead of having absurdly long lists of arguments, or worse, global variables.}.
     For example, a single module with function integrators, or ODE solvers. 
     If you use the object-oriented features of Fortran, it is also good practice to create separate modules for classes, \eg, a sparse-matrix object.
   \item\textbf{Comments}---Comments are kind of a double-edged sword.
