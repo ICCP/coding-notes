@@ -12,8 +12,8 @@ program MyProg
     read *, radius
     surface = PI * radius**2
     circumference = 2 * PI * radius
-    print *, "The surface of the circle is ", surface
-    print *, "and the circumference is     ", circumference
+    print *, "The surface of the circle is", surface
+    print *, "and the circumference is", circumference
 
     fibonacci(1) = 0
     fibonacci(2) = 1
