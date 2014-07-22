@@ -1,6 +1,13 @@
 \Chapter{The magic of Makefiles}{}
 \label{chap:Makefiles}
 
+\begin{quote}
+  \begin{verbatim}
+love: /dev/null
+  @echo not war
+  \end{verbatim}
+\end{quote}
+
 Once your programs become larger, it is convenient to split the source code into several files.
 However, to obtain a running program, each of these files has to be compiled separately (resulting in a \emph{relocatable object file}, with extension \texttt{.o}) and then combined (linked) into a single program.
 Doing this by hand quickly becomes tedious, so we resort to using Makefiles.
