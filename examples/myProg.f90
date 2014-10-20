@@ -12,8 +12,8 @@ program MyProg
     read *, radius
     surface = PI * radius**2
     circumference = 2 * PI * radius
-    print *, "The surface of the circle is ", surface
-    print *, "and the circumference is     ", circumference
+    print *, "The surface of the circle is", surface
+    print *, "and the circumference is", circumference
 
     fibonacci(1) = 0
     fibonacci(2) = 1
@@ -22,8 +22,9 @@ program MyProg
     end do
     print *, "Fibonacci sequence:"
     print "(4I6)", fibonacci
-    ! The ratio of neighboring Fibonacci numbers converges to the
-    ! golden ratio.
-    print *, "Golden ratio:", 1d0 * fibonacci(N) / fibonacci(N - 1)
+    ! The ratio of neighboring Fibonacci numbers
+    ! converges to the golden ratio.
+    print *, "Golden ratio:", &
+             1d0*fibonacci(N)/fibonacci(N - 1)
 
 end program

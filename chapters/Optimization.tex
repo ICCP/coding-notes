@@ -19,7 +19,7 @@ Let's look at a few examples:
 \begin{itemize}
   \item\textbf{Division is slower than multiplication by an inverse.} Although true, optimizing for this results in code that is hard to read, and possibly less accurate.
     Besides, when you're using the \texttt{-ffast-math} option, \texttt{gfortran} will do this for you.
-    A similar observation holds for exponentiation; it is slower than multiplication in general, but \texttt{gfortran} will automatically convert \texttt{x**2} to \texttt{x * x}, provided the exponent is \keyword{integer}.
+    A similar observation holds for exponentiation; it is slower than multiplication in general, but \texttt{gfortran} will automatically convert \texttt{x**2} to \texttt{x * x}, provided the exponent is \keyword{integer}. \newpage
   \item\textbf{Unwinding small loops reduces overhead.} Common wisdom says that
 \begin{lstlisting}[caption=, nolol]
   do i = 1, 3
@@ -49,6 +49,7 @@ That being said, there are a few general rules that will prevent your code from 
 \begin{itemize}
   \item\textbf{Don't reinvent the wheel.} Don't try to write your own matrix multiplication routine, use \texttt{matmul}, or the routines from BLAS (see the \nameref{chap:Linear algebra} appendix).
     Fortran has many built-in numerical functions that are much faster than anything you'll be able to write---use them! (Google `Fortran intrinsics' to get an overview.)
+    \newpage
   \item\textbf{Use array operations.} You can add two arrays by writing
 \begin{lstlisting}[caption=, nolol]
   do i = 1, n
@@ -58,7 +59,7 @@ That being said, there are a few general rules that will prevent your code from 
   end do
 \end{lstlisting}
 or simply by writing \texttt{c = a + b}.
-Guess which is both faster and more readable?
+Guess which is both faster\marginnote{It's easy to forget that array operations make use of a loop ``under the hood,'' though the compiler will generally implement this loop as efficiently as it can.} and more readable?
   \item\textbf{Keep inner loops small.} The code inside loops, especially in nested loops, is executed many times.
     This code will likely be the bottleneck of your program, so it makes sense to concentrate your optimization efforts there.
     Move as much code out of the inner loop as possible.
@@ -115,7 +116,9 @@ Furthermore, better scaling of the error means that they need fewer iterations, 
 Numerical analysis is a large field, and it can be quite daunting trying to understand the merits of different methods, or even finding them.
 For this, we recommend the book \emph{Numerical Recipes}\footnote{Available free online at \url{http://apps.nrbook.com/fortran/index.html}}.
 It covers a wide range of topics, focuses on best practices, and does not ignore coding effort when comparing algorithms.
-It even includes the full source code of the implementations! We recommend always using it as your starting point, with one exception: linear algebra (see \autoref{chap:Linear algebra}).
+It even includes the full source code of the implementations! We recommend
+always using it as your starting point, with one exception: linear algebra
+(see \autoref{chap:Linear algebra}).
 
 We conclude this section with an overview of the computational complexity of certain common operations.
 This will give you an idea of the most likely bottleneck in your code.
@@ -136,7 +139,7 @@ This will give you an idea of the most likely bottleneck in your code.
   \item Taking the inverse of\ a matrix and calculating the eigenvalues/eigenvectors are both $\Oh{n^3}$.
     However, eigendecomposition has a much larger prefactor and is therefore significantly slower.
     It is logically the most expensive matrix operation, since all operations on a diagonal matrix are $\Oh{n}$.
-  \item Iterative algorithms like conjugate-gradient or Krylov-subspace methods are supra-\linebreak convergent in the number of iterations, \ie, the error decreases by a constant factor at each iteration.
+  \item Iterative algorithms like conjugate-gradient or Krylov-subspace methods are supra-convergent in the number of iterations, \ie, the error decreases by a constant factor at each iteration.
     They are especially suitable for sparse matrices, since each iteration is $\Oh{n}$, where $n$ is the number of non-zero elements instead of the dimension.
 \end{itemize}
 

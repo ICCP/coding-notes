@@ -1,19 +1,22 @@
-\documentclass[openany]{book}
+\documentclass[nofonts, notoc, debug]{tufte-book}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{cag}
 \usepackage{fancyhdr}
 \usepackage{float}
-\usepackage{geometry}
+%\usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{epstopdf}
 \usepackage{listings}
 \usepackage{makeidx}
 \usepackage{microtype}
 \usepackage{nag}
+%\usepackage{thumbs}
 \usepackage{titlepic}
-\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+%\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 
 %\usepackage{arevmath}
 \usepackage{lmodern}
@@ -21,13 +24,14 @@
 
 \usepackage{hyperref}
 
-\pagestyle{fancy}
+%\pagestyle{fancy}
 
 %\geometry{a4paper} % May funkify floating listings
 
-\definecolor{TUBlue}{RGB}{61,152,222}
-\definecolor{SpartanGreen}{RGB}{24,69,59}
+%\definecolor{TUBlue}{RGB}{61,152,222}
+%\definecolor{SpartanGreen}{RGB}{24,69,59}
 
+\pretolerance=10000
 
 \hypersetup{
     colorlinks=true,
@@ -67,14 +71,12 @@
 \newcommand{\str}[1]{\texttt{\color{Magenta}#1}}
 \newcommand{\Chapter}[2]{\chapter[#1]{#1\\[1ex]\Large#2}} 
 
-\renewenvironment{quote}{\list{}{\leftmargin=8\parindent}\item\relax}{\endlist}
+\renewenvironment{quote}{\list{}{\leftmargin=4\parindent}\item\relax}{\endlist}
 
 \makeindex
 
 %\widowpenalty=3000
 %\clubpenalty=3000
-
-\begin{document}
 
 \title{ICCP Coding Manual}
 \author{Connor Glosser, Jos Seldenthuis, Chris Verzijl, \\ 
@@ -87,8 +89,13 @@
     \end{figure}
   }
 
-\frontmatter
+\begin{document}
+
+
+%\frontmatter
 \maketitle
+
+\pagestyle{empty}
 
 \newpage
 \null
@@ -96,8 +103,12 @@
 \begin{center}
   \includegraphics[width=0.15\textwidth]{figures/by-nc-sa.eps}
 \end{center}
-This work, including its figures and \LaTeX\ source code, is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
-To view a copy of this license, visit \url{http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en_US}.
+This work, including its figures and source code (where applicable), is
+licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+International License.  To view a copy of this license, visit
+\url{http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en_US}.
+
+\pagestyle{fancy}
 
 \tableofcontents
 %\lstlistoflistings
@@ -124,7 +135,7 @@ To view a copy of this license, visit \url{http://creativecommons.org/licenses/b
   \item \href{http://www.codinghorror.com/blog/2006/05/the-ten-commandments-of-egoless-programming.html}{The Ten Commandments of Egoless Programming}
   \item \href{http://james-iry.blogspot.com/2009/05/brief-incomplete-and-mostly-wrong.html}{A Brief, Incomplete, and Mostly Wrong History of Programming}
   \item \href{https://www.gnu.org/fun/jokes/ed-msg.html}{\texttt{Ed, man! !man ed}}
-  \item \href{http://blog.sanctum.geek.nz/vim-koans/}{Vim koans}
+  \item \href{http://blog.sanctum.geek.nz/vim-koans/}{Vim k\={o}ans}
 \end{itemize}
 
 \printindex

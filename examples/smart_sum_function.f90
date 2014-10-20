@@ -1,4 +1,4 @@
-! Gauss was a genius! 1 + 2 + 3 + ... + n = n * (n + 1) / 2
+! Gauss was a genius! 1 + 2 + 3 + ... + n = n*(n + 1) / 2
 integer function smart_sum(a, b) result(total)
 
     integer, intent(in) :: a, b

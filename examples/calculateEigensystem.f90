@@ -1,12 +1,13 @@
-! Calculates the eigenvalues and, optionally, the eigenvectors of a
-! real symmetric matrix.
+! Calculates the eigenvalues and, optionally, the 
+! eigenvectors of a real symmetric matrix.
 !
-! jobz - If jobz = "N", compute eigenvalues and eigenvectors, if jobz = "V",
-!        compute both.
-! a    - On input, a real symmetric matrix. Only the upper diagonal part is
-!        accessed.
+! jobz - If jobz = "N", compute eigenvalues only, 
+!        if jobz = "V", compute full eigensystem.
+! a    - On input, a real symmetric matrix. Only the upper 
+!        diagonal part is accessed.
 ! w    - On output, contains the eigenvalues of A.
-! v    - On output, if jobz = "V", the columns are the eigenvectors of A.
+! v    - On output, if jobz = "V", the columns are the
+!        eigenvectors of A.
 subroutine mateigrs(jobz, a, w, v)
 
     implicit none

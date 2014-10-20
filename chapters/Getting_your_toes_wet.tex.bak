@@ -40,8 +40,7 @@ A few useful commands include:
 \end{lstlisting}
 
 For your first program, open a terminal, create a directory for ICCP files and open your first Fortran file by typing
-\marginnote[-0.5cm]{Modern terminal emulators all have a feature called
-  \emph{tab completion}\index{Tab completion}; enter part of a command \& hit the \texttt{TAB} key and the terminal will attempt to fill in the rest of the command for you.}
+\marginnote[-0.5cm]{Modern terminal emulators all have a feature called \emph{tab completion}; enter part of a command \& hit the \texttt{TAB} key and the terminal will attempt to fill in the rest of the command for you.}
 \begin{lstlisting}[style=prompt, nolol]
   $ mkdir iccp          # create a new directory called 'iccp'
   $ cd iccp             # move to the new directory
@@ -52,7 +51,7 @@ You can probably guess what this program does, however, a few remarks are in ord
 \begin{itemize}
   \item The program starts with a declaration of variables.\index{Fortran!types}
     \texttt{\keyword{real}(8)} denotes a floating-point variable with double (8 byte) precision.
-    Similarly, \keyword{integer} denotes an integer number.\footnote{Fortran intrinsic types include \keyword{logical}, \keyword{integer}, \keyword{real}, \keyword{complex}, and \keyword{character} data. Modern Fortran also gives you the ability to define your own datatypes.}
+    Similarly, \keyword{integer} denotes an integer number.\footnote{Fortran intrinsic types include \keyword{logical}, \keyword{integer}, \keyword{real}, \keyword{complex}, and \keyword{character} data. Modern Fortran also gives you the ability to define your own datatypes, though a structures-of-arrays design (vs.\ an arrays-of-structures design) tends to work best for high-performance computing.}
     Not specifying a size generally defaults to 4-byte precision.
     \keyword{implicit none}\index{Fortran!implicit none@\keyword{implicit none}} prevents Fortran from trying to infer the type from the variable name, which is a major source of bugs---\emph{always include this!}
   \item The attribute \keyword{parameter}\index{Fortran!parameter@\keyword{parameter}} specifies that we are declaring a constant.
@@ -63,7 +62,7 @@ You can probably guess what this program does, however, a few remarks are in ord
     It is also possible to specify the precision as a suffix: \texttt{1.0\_4} for single and \texttt{1.0\_8} for double precision.
     This also works for integers.
   \item \texttt{\keyword{integer} :: fibonacci(N)} allocates an array of 20
-    integers, with the array\index{Fortran!arrays} index\footnote{Array indices can start at any integer by replacing \texttt{N} with a lower and upper bound separated with a colon. Thus, \lstinline$real :: myArray(-312:74)$ means \texttt{myArray} starts at index -312 and runs through index 74.} running from 1 to 20.
+    integers, with the array\index{Fortran!arrays} index\footnote{Array indices can start at any integer by replacing \texttt{N} with a lower and upper bound separated with a colon. That is, declaring \texttt{myArray(-312:74)} means \texttt{myArray} starts at index -312 and runs through index 74.} running from 1 to 20.
   \item `\texttt{*}' is multiplication, `\texttt{**}' is exponentiation.
   \item The \keyword{print} statement on line 24 contains the format code\index{Fortran!format codes} \str{"(4I6)"}.
     This tells Fortran to print 4 records of integer type, each having a width of 6 characters (including spaces), per line. 
@@ -103,7 +102,7 @@ $ gfortran -Wall -Wextra -march=native -O3 myprog.f90 -o myprog
     The downside is that it can result in executables that will not run on a different machine.
   \item \texttt{-O3}\index{compiler flags!-O3} turns on all optimizations.
     This increases the compilation time significantly, although it should still be fast enough for the programs you'll write in ICCP.
-    The run time of your program, on the other hand, will dramatically decrease.
+    The runtime of your program, on the other hand, will dramatically decrease.
     The only reason not to use this flag is that it might interfere with the debugger (see below).
   \item A possible additional optimization flag is \texttt{-ffast-math}\index{compiler flags!-ffast-math}.
     This flag enables floating-point optimizations which might reduce accuracy or result in incorrect behavior, especially in situations such as divide-by-zero.
