@@ -8,36 +8,8 @@
 If you have a multicore processor, or even multiple processors or machines available, one obvious way to speed up your code is to employ multiprocessing.
 However, this is a difficult and dangerous endeavor, especially if you don't have any prior experience.
 Parallel programs are far more difficult to write and debug than sequential ones, mostly because concurrency introduces entire classes of potential bugs, like race conditions and deadlocks.
-Also, even if it does work, it's not always beneficial.
+Also, even if it does work, it's not always beneficial.\footnote{See Amdahl's law\index{Amdahl's law} for examples of diminishing returns in parallelization.}
 Some algorithms simply don't scale to multiple processors.
-\begin{marginfigure}
-  \begin{tikzpicture}
-    \begin{axis}[
-      title=Amdahl's Law,
-      width=\textwidth,
-      grid=major,
-      xlabel=Number of processors,
-      xmode=log,
-      log basis x={2},
-      xtick={1,8,64,512,4096},
-      ylabel=Speedup,
-      ylabel near ticks,
-      ytick={0,5,10,15,20},
-      legend pos=outer north east,
-      cycle list name=color list
-    ]
-    \foreach \p in {.95, .90, .75, .50, .25} {
-      \addplot+[
-        no marks,
-        domain=1:4096,
-        samples=201
-      ] {1/((1 - \p) + \p/x)};
-      \addlegendentryexpanded{$\p$};
-    }
-    \end{axis}
-  \end{tikzpicture}
-  \caption{\index{Amdahl's Law}Amdahl's law details the theoretical speedup of a fixed-size algorithm given the fraction of the algorithm that can execute in parallel and the number of processors available for computation.}
-\end{marginfigure}
 Despite its complexity, parallel programming is unavoidable in high-performance computing.
 While a true introduction is outside the scope of these notes, we'll give a few guidelines that might help you from accidentally shooting yourself in the foot:
 \begin{itemize}
