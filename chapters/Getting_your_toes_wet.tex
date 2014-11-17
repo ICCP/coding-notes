@@ -19,30 +19,30 @@ Open a terminal and at the prompt (the \$) type
 This command grants \texttt{aptitude} privileges to search for and then install the \texttt{gfortran} package and its documentation.
 You may also find it useful to install the \LaTeX\ typesetting system for writing reports.
 You can install it with another call to \texttt{aptitude}:
-\begin{lstlisting}[style=prompt, nolol]
+\begin{lstlisting}[style=prompt, nolol, breaklines=false]
   $ sudo apt-get install texlive # or texlive-full for a complete installation
 \end{lstlisting}
 
 Once you have \texttt{gfortran} installed, you can start writing programs.
 You will generally compile and run your programs from a terminal window (also called a \emph{console}).
 A few useful commands include:
-\begin{lstlisting}[style=prompt, nolol]
-  $ ls              # display the contents of the current directory
-  $ ls -l           # display contents with extra details
-  $ cp file path    # copy 'file' to 'path'
-  $ mv file path    # move 'file' to 'path'
-  $ rm file         # remove 'file'
-  $ mkdir dir       # create a new directory called 'dir'
-  $ cd dir          # change current directory to 'dir'
-  $ rmdir dir       # remove directory 'dir' (only if it's empty)
-  $ rm -r dir       # remove directory 'dir' (even if it's not empty)
-  $ man cmd         # provide documentation on 'cmd'
+\begin{lstlisting}[style=prompt, nolol, linewidth=30cm]
+  $ ls           # display the contents of the current directory
+  $ ls -l        # display contents with extra details
+  $ cp file path # copy 'file' to 'path'
+  $ mv file path # move 'file' to 'path'
+  $ rm file      # remove 'file'
+  $ mkdir dir    # create a new directory called 'dir'
+  $ cd dir       # change current directory to 'dir'
+  $ rmdir dir    # remove directory 'dir' (only if it's empty)
+  $ rm -r dir    # remove directory 'dir' (even if it's not empty)
+  $ man cmd      # provide documentation on 'cmd'
 \end{lstlisting}
 
 For your first program, open a terminal, create a directory for ICCP files and open your first Fortran file by typing
 \marginnote[-0.5cm]{Modern terminal emulators all have a feature called
   \emph{tab completion}\index{Tab completion}; enter part of a command \& hit the \texttt{TAB} key and the terminal will attempt to fill in the rest of the command for you.}
-\begin{lstlisting}[style=prompt, nolol]
+\begin{lstlisting}[style=prompt, nolol, linewidth=30cm]
   $ mkdir iccp          # create a new directory called 'iccp'
   $ cd iccp             # move to the new directory
   $ gedit myprog.f90    # open a text editor with the file 'myprog.f90'

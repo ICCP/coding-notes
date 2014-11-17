@@ -25,9 +25,9 @@ This does a few things for you:
   \item \texttt{git commit -m ``Initial commit''} takes everything in the index and adds it to the history with the description ``Initial commit''.
 \end{itemize}
 You can add future changes in \texttt{myProg.f90} to the history in a similar way:
-\begin{lstlisting}[style=prompt,nolol]
-  $ git add myProg.f90              # or . to add everything
-  $ git commit -m ``Fixed bug XYZ'' # use a msg appropriate for your changes
+\begin{lstlisting}[style=prompt, nolol, linewidth=30cm]
+  $ git add myProg.f90            # or . to add everything under ./
+  $ git commit -m "Fixed bug XYZ" # use a msg appropriate for your changes
 \end{lstlisting}
 Similarly, you can check the current status of the index with \texttt{git status}. 
 The output will display changes both staged and not staged in the index for the next commit, allowing you to tweak things as necessary.
