@@ -3,7 +3,6 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{cag}
-\usepackage{fancyhdr}
 \usepackage{float}
 %\usepackage{geometry}
 \usepackage{graphicx}
@@ -14,8 +13,6 @@
 \usepackage{nag}
 %\usepackage{thumbs}
 \usepackage{titlepic}
-\usepackage{tikz}
-\usepackage{pgfplots}
 %\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 
 %\usepackage{arevmath}
@@ -31,7 +28,7 @@
 %\definecolor{TUBlue}{RGB}{61,152,222}
 %\definecolor{SpartanGreen}{RGB}{24,69,59}
 
-\pretolerance=10000
+%\pretolerance=10000
 
 \hypersetup{
     colorlinks=true,
@@ -71,14 +68,16 @@
 
 \newcommand{\keyword}[1]{\texttt{\bfseries\color{DarkRed}#1}}
 \newcommand{\str}[1]{\texttt{\color{Magenta}#1}}
-\newcommand{\Chapter}[2]{\chapter[#1]{#1\\[1ex]\Large#2}} 
+\newcommand{\Chapter}[2]{\chapter[#1]{#1\\[-1.5ex]\Large\itshape#2}} 
 
 \renewenvironment{quote}{\list{}{\leftmargin=4\parindent}\item\relax}{\endlist}
 
 \makeindex
 
-%\widowpenalty=3000
-%\clubpenalty=3000
+%\titlespacing*{\chapter}{0pt}{50pt}{40pt} % defaults set by tufte-latex
+\titlespacing*{\chapter}{0pt}{50pt}{10pt}  % much less floaty whitespace
+
+
 
 \title{ICCP Coding Manual}
 \author{Connor Glosser, Jos Seldenthuis, Chris Verzijl, \\ 
