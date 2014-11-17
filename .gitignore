@@ -22,3 +22,5 @@
 *.out
 *.pdf
 *.synctex.gz
+*.swp
+*_latexmk
