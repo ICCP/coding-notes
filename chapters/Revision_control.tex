@@ -10,7 +10,12 @@ The idea is simple: you give a piece of software a description of recent changes
 Written by Linus Torvalds and popularized by websites like \href{https://Github.com/}{Github}\index{Git!Github}, Git\index{Git|(} is probably the most widely used revision system around.
 While a a full Git tutorial is far beyond the scope of this introduction, knowledge of a few basic commands can potentially save you a ton of time (and headaches!) down the road.
 
-To get started, you'll want to install the \texttt{git}, \texttt{gitk}, and \texttt{git-gui} packages on Ubuntu. Next, let's assume you've created an \texttt{iccp/} directory with one file, \texttt{myProg.f90}, that already has some content. Navigate to the \texttt{iccp/} directory and type
+To get started, you'll want to install the \texttt{git}, \texttt{gitk}, and \texttt{git-gui} and set your global \texttt{user.name} \& \texttt{user.email}\footnote{Git uses this information to associate commits with a human-readable identity.}  settings with 
+\begin{verbatim}
+$ git config --global user.name  "John Doe"
+$ git config --global user.email "johndoe@example.com"
+\end{verbatim}
+Next, let's assume you've created an \texttt{iccp/} directory with one file, \texttt{myProg.f90}, that already has some content. Navigate to the \texttt{iccp/} directory and type
 \begin{verbatim}
 $ git init
 $ git add .
@@ -20,7 +25,7 @@ This does a few things for you:
 \begin{itemize}
   \item \texttt{git init} creates a git repository of \texttt{iccp/} by placing the current directory (and all sub-directories) under revision control.
     Any files and directories that get added to \texttt{iccp/} can be tracked as part of the current project.
-  \item \texttt{git add .} adds every file's local changes to the \emph{staging area} or \emph{index}.
+  \item \texttt{git add .} adds every file's local changes\footnote{You do actually need files to add, though. Git won't track an empty directory.} to the \emph{staging area} or \emph{index}.
     The index tracks changes for you to inspect before they become an official part of the project history.
   \item \texttt{git commit -m ``Initial commit''} takes everything in the index and adds it to the history with the description ``Initial commit''.
 \end{itemize}
@@ -36,7 +41,7 @@ If, after some bleary-eyed, hungover coding, you realize you've made a horrible 
 \begin{verbatim}
 $ git diff <file>
 \end{verbatim}
-And to delete any changes you've made
+And to revert any changes you've made\footnote{\texttt{git checkout} is kind of a weird command in that it does several drastically different things (like revert files and switch/create branches).}
 \begin{verbatim}
 $ git checkout <file>
 \end{verbatim}
