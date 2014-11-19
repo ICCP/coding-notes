@@ -43,7 +43,22 @@ So, what does a \texttt{Makefile} look like? As an example, let's go through \au
     In the \texttt{Makefile}, \texttt{\$@} is an alias for the target.
     On line 17, for example, \texttt{\$@} is replaced by \texttt{myprog} when running \texttt{make}.
     Similarly, \texttt{\$\^} is an alias for all dependencies, in this case the list \texttt{\$(OBJS)}.
-  \item Since we don't want to specify a separate rule for every object file, we use \emph{wildcards}.
+  \item
+    \begin{margintable}[11.2\baselineskip]
+      \begin{tabular}{ll}
+        \toprule
+        Sigil & Meaning \\
+        \midrule
+        \texttt{\$@} & Target filename \\
+        \texttt{\$<} & First prerequisite\\
+        \texttt{\$\^} & All prerequisites \\
+        \texttt{\$?} & All newer prerequisites\\
+        \texttt{\%} & Wildcard (usually)\\
+        \bottomrule
+      \end{tabular}
+      \caption{Reference table for common makefile sigils.}
+    \end{margintable} 
+    Since we don't want to specify a separate rule for every object file, we use \emph{wildcards}.
     \texttt{\%.o: \%.f90} means every object file ending in \texttt{.o} depends on the corresponding source file, ending in \texttt{.f90}.
     \texttt{\$<} on the command line is an alias for the first prerequisite, in this case the source file.
     The \texttt{-c} option tell the compiler to only perform the compilation step to create an object file, and to skip linking.
