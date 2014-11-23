@@ -19,8 +19,8 @@ contains
 
     call plclear()
     call plcol0(1)
-    call plbox3("bnstu", "x", 0d0, 0, "bnstu", "y", 0d0, &
-                0, "bcnmstuv", "z", 0d0, 0)
+    call plbox3("bnstu", "x", 0d0, 0, "bnstu", "y", &
+                  0d0, 0, "bcnmstuv", "z", 0d0, 0)
     call plcol0(2)
     call plpoin3(xyz(1, :), xyz(2, :), xyz(3, :), 4)
     call plflush()

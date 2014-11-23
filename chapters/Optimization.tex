@@ -134,7 +134,7 @@ This will give you an idea of the most likely bottleneck in your code.
   \item Matrix-vector multiplication means taking an inner product for each row, so the complexity is $\Oh{n^2}$.
   \item Solving a system of linear equations is also $\Oh{n^2}$, but the prefactor is much larger than for matrix-vector multiplication.
   \item \Naive\ matrix-matrix multiplication is $\Oh{n^3}$.
-    Libraries such as BLAS and \idx{LAPACK} are smarter and do it in $\Oh{n^{\log_2(7)}}\approx\Oh{n^{2.807}}$.
+    Libraries such as BLAS and \indexentry{LAPACK} are smarter and do it in $\Oh{n^{\log_2(7)}}\approx\Oh{n^{2.807}}$.
     Another reason to avoid writing this yourself.\footnote{The Fortran intrinsic \texttt{matmul} is actually implemented using BLAS.}
   \item Taking the inverse of\ a matrix and calculating the eigenvalues/eigenvectors are both $\Oh{n^3}$.
     However, eigendecomposition has a much larger prefactor and is therefore significantly slower.
