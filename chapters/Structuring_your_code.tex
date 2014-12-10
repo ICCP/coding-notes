@@ -6,7 +6,7 @@
 \end{quote}
 Readability is the most important quality of your code.
 It's more important even than being bug-free; you can fix a readable but incorrect program, while an unreadable program is next to useless even if it works.
-As an example of what not to do, take a look at the gem in \autoref{lst:snppic}.
+As an example of what not to do, take a look at the gem in \cref{lst:snppic}.
 \lstinputlisting[float=htb,label=lst:snppic]{examples/snppic.f}
 Originally written in FORTRAN IV for an IBM 1130 (in 1969!), it is a perfect example of spaghetti code and it makes me want to pick out my eyes with a fondue fork.
 If you can figure out what it does, I'll buy you a beer.\footnote{It's part of one of the first open source programs in history, so no snooping with Google!}
@@ -19,14 +19,14 @@ In this chapter we focus on structure.
 
 As a (silly) example, let's say you need to sum all integers in a certain interval.
 Programmers are lazy, so we're going to write a program to do that for us.
-Gauss, of course, found a way to do this very quickly, but for the sake of the example, let's pretend we don't know about it and use \autoref{lst:SumsBeforeGauss} instead.
+Gauss, of course, found a way to do this very quickly, but for the sake of the example, let's pretend we don't know about it and use \cref{lst:SumsBeforeGauss} instead.
 \lstinputlisting[float=htbp,label=lst:SumsBeforeGauss]{examples/SumsBeforeGauss.f90}
 Note that we can't use the word \texttt{sum} as a variable name, since that's a Fortran intrinsic\footnote{Fortran \emph{occasionally} uses reserved keywords in multiple ways, such as \keyword{dim} (the two-argument mathematical function) and \texttt{dim} (an argument to several array-based subroutines), though the meaning is usually clear.}, so we use \texttt{total} instead.
 This program is simple, clean, and doesn't need comments to show what it does.
 However, we can do better.
 Summing numbers in an interval is a generic mathematical operation, which we might need to do more often.
 It therefore makes sense to move that code to a separate subroutine which we only have to write once and can then reuse as many times as we need.
-We can do this in Fortran, with the subroutine seen in \autoref{lst:SumsBeforeGauss_subroutine}.
+We can do this in Fortran, with the subroutine seen in \cref{lst:SumsBeforeGauss_subroutine}.
 \lstinputlisting[float=htbp,label=lst:SumsBeforeGauss_subroutine]{examples/SumsBeforeGauss_subroutine.f90}
 Fortran subroutines are invoked with the keyword \keyword{call} followed by the name of the routine and an optional list of parameters in parentheses.
 The code for the subroutine itself appears after the keyword \keyword{contains}.
@@ -39,7 +39,7 @@ For parameters functioning as both, we use \texttt{\keyword{intent}(\keyword{ino
 
 \texttt{stupid\_sum} is essentially just a mathematical function.
 Wouldn't it then be nice to be able to use it that way, by simply invoking it with \texttt{total = stupid\_sum(first, last)}?
-Fortunately, \autoref{lst:SumsBeforeGauss_function} demonstrates a way to do just that.
+Fortunately, \cref{lst:SumsBeforeGauss_function} demonstrates a way to do just that.
 \lstinputlisting[float=htbp,label=lst:SumsBeforeGauss_function]{examples/SumsBeforeGauss_function.f90}
 A function in Fortran is just a subroutine returning a value.
 We therefore need to specify the type of (the result of) the function as well as its arguments.
@@ -52,7 +52,7 @@ The golden rule here is: \emph{every function or subroutine should do one thing 
 In practice this also means they should be small; if your function doesn't fit on a single screen, that's usually an indication that you should split it up.
 Besides making the code more readable, this also makes it easier to modify.
 Let's say that you suddenly discover Gauss' trick for summing intervals.
-All you need to do then is replace \texttt{stupid\_sum} by \texttt{smart\_sum} (\autoref{lst:smart_sum_function}).
+All you need to do then is replace \texttt{stupid\_sum} by \texttt{smart\_sum} (\cref{lst:smart_sum_function}).
 \lstinputlisting[float=t!,label=lst:smart_sum_function]{examples/smart_sum_function.f90}
 You don't have to search through all your code to change the calculation everywhere; you just update the function and your entire program suddenly becomes a lot faster.
 
@@ -60,13 +60,13 @@ You don't have to search through all your code to change the calculation everywh
 
 Many functions and subroutines are reusable not only within a single program, but also between programs.
 In that case it is a good idea to place those routines in a module.\footnote{Some subroutines---particularly those that allocate arrays that appear as arguments---require you to write an explicit interface for them \emph{or} place them within a module (so the compiler can generate the interface for you).}
-For example, if you envisage using Gauss' algorithm very often in the future, you might want to create the module \texttt{gauss.f90} given in \autoref{lst:gauss}.
+For example, if you envisage using Gauss' algorithm very often in the future, you might want to create the module \texttt{gauss.f90} given in \cref{lst:gauss}.
 \lstinputlisting[float=htbp,label=lst:gauss]{examples/gauss.f90}
 By default, all functions and subroutines in a module are visible to external programs.
 This can cause collisions with similarly names functions in other modules, especially in the case of helper routines that are only used within the module.
 Common practice is therefore to specify the \keyword{private} keyword to change the default behavior; only the routines that are explicitly made public are then usable elsewhere.
 
-Any program can now use the functions in \texttt{gauss.f90} by simply specifying \texttt{\keyword{use} Gauss} (\autoref{lst:Sums}).
+Any program can now use the functions in \texttt{gauss.f90} by simply specifying \texttt{\keyword{use} Gauss} (\cref{lst:Sums}).
 \lstinputlisting[float=htbp,label=lst:Sums]{examples/Sums.f90}
 You now have two different files that need to be compiled to produce a working program.
 It's possible to do this by hand, but there is a much easier way with \nameref{chap:Makefiles}.

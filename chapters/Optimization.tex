@@ -47,7 +47,7 @@ Unless you're intimately familiar with things like cache misses, branch predicti
 
 That being said, there are a few general rules that will prevent your code from accidentally becoming horrendously slow:
 \begin{itemize}
-  \item\textbf{Don't reinvent the wheel.} Don't try to write your own matrix multiplication routine, use \texttt{matmul}, or the routines from BLAS (see the \nameref{chap:Linear algebra} appendix).
+  \item\textbf{Don't reinvent the wheel.} Don't try to write your own matrix multiplication routine, use \texttt{matmul}, or the routines from BLAS (see \nameref{chap:Linear algebra}).
     Fortran has many built-in numerical functions that are much faster than anything you'll be able to write---use them! (Google `Fortran intrinsics' to get an overview.)
     \newpage
   \item\textbf{Use array operations.} You can add two arrays by writing
@@ -117,8 +117,7 @@ Numerical analysis is a large field, and it can be quite daunting trying to unde
 For this, we recommend the book \emph{Numerical Recipes}\index{Numerical Recipes}\footnote{Available free online at \url{http://apps.nrbook.com/fortran/index.html}}.
 It covers a wide range of topics, focuses on best practices, and does not ignore coding effort when comparing algorithms.
 It even includes the full source code of the implementations! We recommend
-always using it as your starting point, with one exception: linear algebra
-(see \autoref{chap:Linear algebra}).
+always using it as your starting point, with one exception: \nameref{chap:linear algebra}.
 
 We conclude this section with an overview of the computational complexity of certain common operations.
 This will give you an idea of the most likely bottleneck in your code.

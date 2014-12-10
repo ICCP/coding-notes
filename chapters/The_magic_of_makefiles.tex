@@ -22,7 +22,7 @@ $ make clean
 The \texttt{make} program is smart enough to only compile files that have changed; so if you just fixed a bug in \texttt{file6.f90}, it will only recompile that file (generating \texttt{file6.o}) and perform the linking step, without touching the other files.
 
 \lstinputlisting[language=,showtabs=true,float=htb,label=lst:example_makefile]{examples/example_makefile}
-So, what does a \texttt{Makefile} look like? As an example, let's go through \autoref{lst:example_makefile} step by step.
+So, what does a \texttt{Makefile} look like? As an example, let's go through \cref{lst:example_makefile} step by step.
 \begin{itemize}
   \item The first lines declare a few variables for later use.
     \texttt{FC} is set to the Fortran compiler \texttt{gfortran}, \texttt{FFLAGS} contains the compiler flags and \texttt{LDFLAGS} the linker flags.
