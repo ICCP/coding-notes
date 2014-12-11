@@ -1,7 +1,7 @@
 \Chapter{Getting your toes wet}{with Fortran and Linux}
 \label{chap:Getting your toes wet}
 \begin{quote}\small
-  \emph{``1957: John Backus and IBM create FORTRAN. There's nothing funny about IBM or FORTRAN. It is a syntax error to write FORTRAN while not wearing a blue tie.''} \\ \hspace*{\fill}---James Iry
+  \emph{``1957: John Backus and IBM create FORTRAN\@. There's nothing funny about IBM or FORTRAN\@. It is a syntax error to write FORTRAN while not wearing a blue tie.''} \\ \hspace*{\fill}---James Iry
 \end{quote}
 
 For this course we recommend using the GNU Fortran compiler, as it is free and of reasonably high quality.\footnote{You're welcome to use the Intel Fortran compiler, which is free on Linux, but remember to change the compiler flags, since they differ from \texttt{gfortran}.}
@@ -16,9 +16,9 @@ Open a terminal and at the prompt (the \$) type
   $ sudo apt-get install gfortran gfortran-doc
 \end{lstlisting}
 \emph{Note that anything you type in the console is case-sensitive!}
-This command grants \texttt{aptitude} privileges to search for and then install the \texttt{gfortran} package and its documentation.
+This command grants the package manager (\texttt{aptitude}) privileges to search for and then install the \texttt{gfortran} package and its documentation.
 You may also find it useful to install the \LaTeX\ typesetting system for writing reports.
-You can install it with another call to \texttt{aptitude}:
+You can install it with another call to \texttt{apt-get}:
 \begin{lstlisting}[style=prompt, nolol, breaklines=false]
   $ sudo apt-get install texlive # or texlive-full for a complete installation
 \end{lstlisting}
@@ -29,19 +29,19 @@ A few useful commands include:
 \begin{lstlisting}[style=prompt, nolol, linewidth=30cm]
   $ ls           # display the contents of the current directory
   $ ls -l        # display contents with extra details
-  $ cp file path # copy 'file' to 'path'
-  $ mv file path # move 'file' to 'path'
-  $ rm file      # remove 'file'
-  $ mkdir dir    # create a new directory called 'dir'
-  $ cd dir       # change current directory to 'dir'
-  $ rmdir dir    # remove directory 'dir' (only if it's empty)
-  $ rm -r dir    # remove directory 'dir' (even if it's not empty)
-  $ man cmd      # provide documentation on 'cmd'
+  $ cp file path # copy `file' to `path'
+  $ mv file path # move `file' to `path'
+  $ rm file      # remove `file'
+  $ mkdir dir    # create a new directory called `dir'
+  $ cd dir       # change current directory to `dir'
+  $ rmdir dir    # remove directory `dir' (only if it's empty)
+  $ rm -r dir    # remove directory `dir' (even if it's not empty)
+  $ man cmd      # provide documentation on `cmd'
 \end{lstlisting}
 
 For your first program, open a terminal, create a directory for ICCP files and open your first Fortran file by typing
-\marginnote[-0.5cm]{Modern terminal emulators all have a feature called
-  \emph{tab completion}\index{Tab completion}; hit the \texttt{TAB} key after you've entered part of a command and the terminal will attempt to fill in the rest of the command for you.}
+\marginnote[-0.5cm]{Modern shells all have a feature called
+  \emph{tab completion}\index{Tab completion}; hit the \texttt{TAB} key after you've entered part of a command and the shell will attempt to fill in the rest of the command for you.}
 \begin{lstlisting}[style=prompt, nolol, linewidth=30cm]
   $ mkdir iccp          # create a new directory called 'iccp'
   $ cd iccp             # move to the new directory
@@ -62,8 +62,7 @@ You can probably guess what this program does, however, a few remarks are in ord
     For double-precision numbers, use \texttt{d} instead of \texttt{e} in scientific notation, \eg, \texttt{1d-1}.
     It is also possible to specify the precision as a suffix: \texttt{1.0\_4} for single and \texttt{1.0\_8} for double precision.
     This also works for integers.
-  \item \texttt{\keyword{integer} :: fibonacci(N)} allocates an array of 20
-    integers, with the array\index{Fortran!arrays} index\footnote{Array indices can start at any integer by replacing \texttt{N} with a lower and upper bound separated with a colon. Thus, \lstinline$real :: myArray(-312:74)$ means \texttt{myArray} starts at index -312 and runs through index 74.} running from 1 to 20.
+  \item \texttt{\keyword{integer} :: fibonacci(N)} allocates an array of 20 integers, with the array\index{Fortran!arrays} index\footnote{Array indices can start at any integer by replacing \texttt{N} with a lower and upper bound separated with a colon. Thus, \lstinline$real :: myArray(-312:74)$ means \texttt{myArray} starts at index -312 and runs through index 74.} running from 1 to 20.
   \item `\texttt{*}' is multiplication, `\texttt{**}' is exponentiation.
   \item The \keyword{print} statement on line 24 contains the format code\index{Fortran!format codes} \str{"(4I6)"}.
     This tells Fortran to print 4 records of integer type, each having a width of 6 characters (including spaces), per line. 
@@ -116,4 +115,4 @@ If the program compiled correctly, you can run it by typing \texttt{./a.out} or 
 Note that \texttt{./} specifies the \emph{path}, \ie, the location where to find the program.
 The dot means the current directory (similarly, \texttt{..} refers to the parent directory), and the slash separates directories and file names (like the backslash in DOS and Windows).
 
-\lstinputlisting[float=h!,label=lst:myProg]{examples/myProg.f90}
+%\lstinputlisting[float=h!,label=lst:myProg]{examples/myProg.f90}

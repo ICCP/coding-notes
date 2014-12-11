@@ -2,7 +2,7 @@
 \label{chap:Revision control}
 
 \begin{quote}
-\emph{``And then there's \texttt{git rebase --interactive}, which is a bit like \texttt{git commit --amend} hopped up on acid and holding a chainsaw---completely insane and quite dangerous but capable of exposing entirely new states of mind."} \\ \hspace*{\fill}---Ryan Tomayko
+\emph{``And then there's \texttt{git rebase --interactive}, which is a bit like \texttt{git commit --amend} hopped up on acid and holding a chainsaw---completely insane and quite dangerous but capable of exposing entirely new states of mind.''} \\ \hspace*{\fill}---Ryan Tomayko
 \end{quote}
 
 A revision control system is perhaps the third most useful tool to a programmer after only the editor and compiler.
@@ -64,7 +64,7 @@ That said, here are some tried and true tips to make the most of Git:
   \hspace*{\fill}---Randall Munroe (\href{https://xkcd.com/1296/}{XKCD})
 \end{marginfigure}
   \item \textbf{Commit the bare minimum}. Only commit what's needed to recompile a functional program.
-    Git just tracks the differences in files between commits to save space, but executables, output data, PDFs, images, etc. all require a totally new copy in the history every time they change (and that's frequently!)
+    Git just tracks the differences in files between commits to save space, but executables, output data, PDFs, images, \etc\ all require a totally new copy in the history every time they change (and that's frequently!)
     Tracking a \texttt{.gitignore} file with some simple patterns can automatically ignore files of a similar type.
   \item \textbf{Learn the advanced Git features}. Basic commits barely scratch the surface of Git's functionality.
     Branching lets you test drive changes in a copy of your code in an easily-reset sandbox, the network features let you not only backup code but also collaborate with other developers, and \texttt{git-bisect} can help you \emph{automatically} pinpoint exactly where and when a bug crept in.

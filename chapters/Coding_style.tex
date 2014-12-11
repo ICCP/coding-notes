@@ -55,7 +55,7 @@ Remember: you will be spending a lot more time reading your code than writing it
     The how should be evident from the code itself.
     \emph{``Good code is its own best documentation.''} If you follow the other guidelines regarding naming and keeping functions small, you can generally suffice with a small comment at the beginning of every function or subroutine.
 \end{itemize}
-One final point, not of style, but important nonetheless: start every program and module with \keyword{implicit none}\marginnote{The \texttt{-fimplicit-none}\index{compiler flags!-fimplicit-none} compiler flag will also turn off implicit typing globally.}  \index{Fortran!implicit none@\keyword{implicit none}}.
+One final point, not of style, but important nonetheless: start every program and module with \keyword{implicit none}\marginnote{The \texttt{-fimplicit-none}\index{compiler flags!-fimplicit-none} compiler flag will also turn off implicit typing globally.}\index{Fortran!implicit none@\keyword{implicit none}}.
 This is an unfortunate holdover from older versions of Fortran; it forces you to explicitly declare all variables, instead of allowing Fortran to infer the type from the name.
 Forgetting \keyword{implicit none} and making a typo in one of your variable names is a major source of bugs.
 \emph{Never ever omit this!}

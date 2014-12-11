@@ -31,7 +31,7 @@ While a true introduction is outside the scope of these notes, we'll give a few 
   end do
   !$omp end parallel do
 \end{lstlisting}
-    will execute the loop in parallel. Use Google for more information on how to use OpenMP.
+    will execute the loop in parallel. Use Google for more information on how to use OpenMP\@.
   \item\textbf{Don't use more threads than you have physical cores.} This may seem like stating the obvious, but it actually happens rather often.
   Most modern Intel processors implement hyper-threading.
   This doubles the apparent number of cores, which helps with task switching when you're running many different programs at once.
