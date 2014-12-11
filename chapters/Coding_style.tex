@@ -46,14 +46,14 @@ Remember: you will be spending a lot more time reading your code than writing it
     Don't worry about the overhead of calling a function.
     If you use optimization flags like \texttt{-O3}, the compiler will try to inline them anyway.
   \item\textbf{Modules}---Separate your program into logical units.
-    Combine related functions and subroutines into modules\footnote{It's also convenient to put all physical parameters (number of particles, $\pi$, $c$, $k_B$, etc.) into their own module, even if they're just constant numbers. You can then ``load'' the parameters into your subroutines with the \keyword{use} statement instead of having absurdly long lists of arguments, or worse, global variables.}.
+    Combine related functions and subroutines into modules\footnote{You may also find it convenient to put all physical parameters (number of particles, $\pi$, $c$, $k_B$, etc.) into their own module, even if they're just constant numbers. You can then ``load'' the parameters into your subroutines with the \keyword{use} statement instead of having absurdly long lists of arguments, or worse, \Biohazard\ global variables \Biohazard.\index{global variables|see {biohazard}}\index{biohazard}}.
     For example, a single module with function integrators, or ODE solvers. 
     If you use the object-oriented features of Fortran, it is also good practice to create separate modules for classes, \eg, a sparse-matrix object.
   \item\textbf{Comments}---Comments are kind of a double-edged sword.
-    If used wrongly, they can actually hurt readability.
-    The golden rule is: never explain \emph{how} it works, just \emph{what} it does.
+    If used improperly or left unmaintained, they actually hurt readability.
+    The general idea is to avoid explaining \emph{how} your code works and instead just mention \emph{what} it does.
     The how should be evident from the code itself.
-    \emph{``Good code is its own best documentation.''} If you follow the other guidelines regarding naming and keeping functions small, you can generally suffice with a small comment at the beginning of every function or subroutine.
+    \emph{``Good code is its own best documentation.''} If you follow the other guidelines regarding naming and keeping functions small, you can generally suffice with nothing more than a small comment at the beginning of every function or subroutine.
 \end{itemize}
 One final point, not of style, but important nonetheless: start every program and module with \keyword{implicit none}\marginnote{The \texttt{-fimplicit-none}\index{compiler flags!-fimplicit-none} compiler flag will also turn off implicit typing globally.}\index{Fortran!implicit none@\keyword{implicit none}}.
 This is an unfortunate holdover from older versions of Fortran; it forces you to explicitly declare all variables, instead of allowing Fortran to infer the type from the name.
