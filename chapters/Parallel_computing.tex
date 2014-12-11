@@ -23,6 +23,7 @@ While a true introduction is outside the scope of these notes, we'll give a few 
     OpenMP only works on single machines with shared memory, but it is by far the easiest framework to use.
     All you need to do is add \texttt{-fopenmp} to \texttt{FFLAGS} and \texttt{LDFLAGS} in your \texttt{Makefile} and add a few directives to your code.
     For example
+\newpage
 \begin{lstlisting}[caption=, nolol]
   !$omp parallel do
   do i = 1, n

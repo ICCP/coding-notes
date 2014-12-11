@@ -63,8 +63,8 @@ In that case it is a good idea to place those routines in a module.\footnote{Som
 For example, if you envisage using Gauss' algorithm very often in the future, you might want to create the module \texttt{gauss.f90} given in \cref{lst:gauss}.
 \lstinputlisting[float=htbp,label=lst:gauss]{examples/gauss.f90}
 By default, all functions and subroutines in a module are visible to external programs.
-This can cause collisions with similarly names functions in other modules, especially in the case of helper routines that are only used within the module.
-Common practice is therefore to specify the \keyword{private} keyword to change the default behavior; only the routines that are explicitly made public are then usable elsewhere.
+This can cause collisions with similarly named functions in other modules, especially in the case of helper routines that are only used within the module.
+Common practice is therefore to specify the \keyword{private}\index{Fortran!private@\keyword{private}} keyword to change the default behavior; only the routines that are explicitly made public are then usable elsewhere.
 
 Any program can now use the functions in \texttt{gauss.f90} by simply specifying \texttt{\keyword{use} Gauss} (\cref{lst:Sums}).
 \lstinputlisting[float=htbp,label=lst:Sums]{examples/Sums.f90}
