@@ -47,7 +47,7 @@ Unless you're intimately familiar with things like cache misses, branch predicti
 
 That being said, there are a few general rules that will prevent your code from accidentally becoming horrendously slow:
 \begin{itemize}
-  \item\textbf{Don't reinvent the wheel.} Don't try to write your own matrix multiplication routine, use \texttt{matmul}, or the routines from BLAS (see \nameref{chap:Linear algebra}).
+  \item\textbf{Don't reinvent the wheel.} Don't try to write your own matrix multiplication routine, use \keyword{matmul}, or the routines from BLAS (see \nameref{chap:Linear algebra}).
     Fortran has many built-in numerical functions that are much faster than anything you'll be able to write---use them! (Google `Fortran intrinsics' to get an overview.)
     \newpage
   \item\textbf{Use array operations.} You can add two arrays by writing
@@ -134,7 +134,7 @@ This will give you an idea of the most likely bottleneck in your code.
   \item Solving a system of linear equations is also $\Oh{n^2}$, but the prefactor is much larger than for matrix-vector multiplication.
   \item \Naive\ matrix-matrix multiplication is $\Oh{n^3}$.
     Libraries such as BLAS and \indexentry{LAPACK} are smarter and do it in $\Oh{n^{\log_2(7)}}\approx\Oh{n^{2.807}}$.
-    Another reason to avoid writing this yourself.\footnote{The Fortran intrinsic \texttt{matmul} is actually implemented using BLAS.}
+    Another reason to avoid writing this yourself.\footnote{The Fortran intrinsic \keyword{matmul} is actually implemented using BLAS.}
   \item Taking the inverse of\ a matrix and calculating the eigenvalues/eigenvectors are both $\Oh{n^3}$.
     However, eigendecomposition has a much larger prefactor and is therefore significantly slower.
     It is logically the most expensive matrix operation, since all operations on a diagonal matrix are $\Oh{n}$.
