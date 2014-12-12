@@ -123,7 +123,7 @@ $ gfortran -Wall -Wextra -march=native -O3 myprog.f90 -o myprog
     This flag enables floating-point optimizations which might reduce accuracy or result in incorrect behavior, especially in situations such as divide-by-zero.
     We therefore recommend not using this flag until you have verified that your program produces the correct results.
     After that you can use it to make your program faster, but do check that it still behaves correctly.
-  \item Finally, if your code starts throwing segmentation faults (segfaults), consider using the \texttt{-fbounds-check}\index{compiler flags!-fbounds-check} flag.
+  \item Finally, if your code starts throwing segmentation faults (segfaults), consider using the \texttt{-fbounds-check}\index{compiler flags!-fbounds-check}\index{segmentation fault} flag.
     Segfaults usually occur because you've run an index off the end of an array, so compiling with this flag turns on runtime bounds checking (at the expense of significantly reduced performance).
 \end{itemize}
 If the program compiled correctly, you can run it by typing \texttt{./a.out} or \texttt{./myprog}.
