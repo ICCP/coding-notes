@@ -1,4 +1,4 @@
-\documentclass[nofonts, notoc, debug]{tufte-book}
+\documentclass[nofonts,notoc,debug]{tufte-book}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -24,6 +24,8 @@
 
 \usepackage{hyperref}
 \usepackage{cleveref} % Must come after hyperref
+
+%\geometry{showframe}% for debugging purposes -- displays the margins
 
 %\pagestyle{fancy}
 
@@ -82,7 +84,7 @@
 \makeindex
 
 %\titlespacing*{\chapter}{0pt}{50pt}{40pt} % defaults set by tufte-latex
-\titlespacing*{\chapter}{0pt}{50pt}{10pt}  % much less floaty whitespace
+%\titlespacing*{\chapter}{0pt}{50pt}{10pt}  % much less floaty whitespace
 
 \title{ICCP Coding Manual}
 \author{Connor Glosser, Jos Seldenthuis, Chris Verzijl, \\ 
@@ -96,16 +98,14 @@
   }
 
 \begin{document}
-
-
-%\frontmatter
 \maketitle
+%\frontmatter
 
 \pagestyle{empty}
-
 \newpage\
 \null\
 \vfill
+\begin{fullwidth}
 \begin{center}
   \includegraphics[width=0.15\textwidth]{figures/by-nc-sa.eps}
 \end{center}
@@ -113,7 +113,7 @@ This work, including its figures and source code (where applicable), is
 licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0
 International License.  To view a copy of this license, visit
 \url{http://creativecommons.org/licenses/by-nc-sa/4.0/deed.en_US}.
-
+\end{fullwidth}
 \pagestyle{fancy}
 
 \tableofcontents
@@ -121,17 +121,19 @@ International License.  To view a copy of this license, visit
 
 \include{chapters/Introduction}
 \mainmatter
+\part{The Basics}
 \include{chapters/Getting_your_toes_wet}
 \include{chapters/Structuring_your_code}
 \include{chapters/The_magic_of_makefiles}
 \include{chapters/Debugging}
-\include{chapters/Optimization}
 \include{chapters/Coding_style}
+\include{chapters/Revision_control}
+\part{Getting More Advanced}
+\include{chapters/Optimization}
 \include{chapters/Random_numbers}
 \include{chapters/Linear_algebra}
 \include{chapters/Plotting_with_plplot}
 \include{chapters/Parallel_computing}
-\include{chapters/Revision_control}
 \backmatter
 \Chapter{Further reading}{a.k.a\ programmer humor}
 \begin{itemize}
