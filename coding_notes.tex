@@ -46,12 +46,16 @@
     urlcolor=Green
 }
 
+\newcommand{\commentstyle}{\itshape\color{Blue}}
+\newcommand{\keywordstyle}{\bfseries\color{DarkRed}}
+\newcommand{\stringstyle}{\color{Magenta}}
+
 \lstset{
   language=fortran,
   basicstyle=\ttfamily,
-  commentstyle=\itshape\color{Blue},
-  keywordstyle=\bfseries\color{DarkRed},
-  stringstyle=\color{Magenta},
+  commentstyle=\commentstyle,
+  keywordstyle=\keywordstyle,
+  stringstyle=\stringstyle,
   columns=fixed,
   numbers=left,
   numberstyle=\footnotesize\color{lightgray},
@@ -75,9 +79,9 @@
   breaklines=false,
 }
 
-\newcommand{\keyword}[1]{\texttt{\bfseries\color{DarkRed}#1}}
-\newcommand{\str}[1]{\texttt{\color{Magenta}#1}}
-\newcommand{\Chapter}[2]{\chapter[#1]{#1\\[-1.5ex]\Large\itshape#2}} 
+\newcommand{\keyword}[1]{\texttt{\keywordstyle#1}}
+\newcommand{\str}[1]{\texttt{\stringstyle#1}}
+\newcommand{\Chapter}[2]{\chapter[#1]{#1\\[-1.5ex]\Large\itshape#2}}
 
 \renewenvironment{quote}{\list{}{\leftmargin=4\parindent}\item\relax}{\endlist}
 
